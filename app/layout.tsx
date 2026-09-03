@@ -122,8 +122,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-IN" className={`${jakarta.variable} ${fraunces.variable}`}>
-      <body className="font-sans antialiased overflow-x-hidden w-full">
+    <html lang="en-IN" className={`${jakarta.variable} ${fraunces.variable} overflow-x-hidden w-full max-w-full m-0 p-0`}>
+      <body className="font-sans antialiased overflow-x-hidden w-full max-w-full m-0 p-0">
         <DentistSchema />
         {children}
       </body>

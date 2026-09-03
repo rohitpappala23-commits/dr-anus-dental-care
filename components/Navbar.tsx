@@ -118,21 +118,21 @@ export function Navbar({ onBookClick }: NavbarProps) {
         scrolled ? "border-slate-200 shadow-sm" : "border-transparent",
       )}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-2 sm:gap-4 px-4 sm:px-6 py-3">
 
         {/* ── Brand ── */}
         <Link
           href="/"
-          className="group flex flex-col leading-tight"
+          className="group flex flex-col leading-tight min-w-0 shrink"
           onClick={closeMobile}
           aria-label="Dr. Anu's Dental Care — Home"
         >
-          <span className="font-display text-xl font-semibold text-slate-900 transition-colors group-hover:text-[#970747]">
+          <span className="font-display text-base sm:text-xl font-semibold text-slate-900 transition-colors group-hover:text-[#970747] truncate">
             Dr. Anu&apos;s{" "}
             <span className="text-[#970747]">Dental Care</span>
           </span>
           <span
-            className="mt-0.5 w-fit rounded-full bg-[#fdf2f6] text-[#970747] border border-[#f8d0df] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider"
+            className="mt-0.5 w-fit rounded-full bg-[#fdf2f6] text-[#970747] border border-[#f8d0df] px-2 py-0.5 text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider"
           >
             {BUSINESS.subtitle}
           </span>
@@ -275,8 +275,19 @@ export function Navbar({ onBookClick }: NavbarProps) {
           })}
         </nav>
 
-        {/* ── Desktop CTA + Mobile hamburger ── */}
-        <div className="flex items-center gap-3">
+        {/* ── Desktop CTA + Mobile buttons ── */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          {/* Mobile quick book icon button */}
+          <button
+            type="button"
+            onClick={onBookClick}
+            aria-label="Book Appointment"
+            className="inline-flex size-9 items-center justify-center rounded-full bg-[#970747] text-white hover:bg-[#83063d] shadow-sm lg:hidden cursor-pointer"
+            suppressHydrationWarning
+          >
+            <CalendarCheck className="size-4" aria-hidden />
+          </button>
+
           <Button onClick={onBookClick} className="hidden lg:inline-flex">
             <CalendarCheck className="size-4" aria-hidden />
             Book Appointment
@@ -284,7 +295,7 @@ export function Navbar({ onBookClick }: NavbarProps) {
 
           <button
             type="button"
-            className="inline-flex size-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition-colors hover:border-[#970747] hover:text-[#970747] lg:hidden"
+            className="inline-flex size-9 sm:size-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition-colors hover:border-[#970747] hover:text-[#970747] lg:hidden cursor-pointer"
             aria-haspopup="dialog"
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"

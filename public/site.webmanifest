@@ -1,0 +1,9 @@
+{
+  "name": "Dr. Anu's Dental Care",
+  "short_name": "Dr. Anu Dental",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#970747",
+  "icons": []
+}
