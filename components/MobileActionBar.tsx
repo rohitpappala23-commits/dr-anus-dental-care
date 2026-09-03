@@ -24,7 +24,7 @@ export function MobileActionBar() {
         <a
           href={`tel:${primaryPhone}`}
           aria-label={`Call Dr. Anu's Dental Care at ${primaryLabel}`}
-          className="group relative flex flex-1 flex-col items-center justify-center gap-0.5 overflow-hidden bg-gradient-to-r from-[#970747] to-[#6f0534] py-3.5 transition-colors active:brightness-90"
+          className="group relative flex flex-1 flex-col items-center justify-center gap-0.5 overflow-hidden bg-gradient-to-r from-[#970747] to-[#6f0534] py-4 min-h-[56px] transition-colors active:brightness-90"
         >
           {/* Shimmer on hover */}
           <span
@@ -58,7 +58,7 @@ export function MobileActionBar() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat with Dr. Anu's Dental Care on WhatsApp"
-          className="group relative flex flex-1 flex-col items-center justify-center gap-0.5 overflow-hidden bg-gradient-to-r from-[#25d366] to-[#128c7e] py-3.5 transition-colors active:brightness-90"
+          className="group relative flex flex-1 flex-col items-center justify-center gap-0.5 overflow-hidden bg-gradient-to-r from-[#25d366] to-[#128c7e] py-4 min-h-[56px] transition-colors active:brightness-90"
         >
           <span
             className="pointer-events-none absolute inset-0 translate-x-[-100%] skew-x-[-20deg] bg-white/10 transition-transform duration-500 group-hover:translate-x-[200%]"

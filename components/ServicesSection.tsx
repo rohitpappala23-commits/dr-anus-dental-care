@@ -98,7 +98,7 @@ export function ServicesSection({ onBookClick }: ServicesSectionProps) {
 
           {/* ── Treatment card grid ── */}
           <div
-            className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+            className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5"
             role="list"
           >
             {displayed.map((treatment) => (
@@ -149,7 +149,7 @@ function TreatmentCard({ treatment, onViewDetails, onBookClick }: TreatmentCardP
       className="group flex flex-col overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
     >
       {/* Cover image */}
-      <div className="relative h-44 shrink-0 overflow-hidden">
+      <div className="relative aspect-[16/9] shrink-0 overflow-hidden">
         <Image
           src={treatment.imageUrl}
           alt={treatment.imageAlt}

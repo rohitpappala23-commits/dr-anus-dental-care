@@ -115,7 +115,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#f7f7f4",
+  themeColor: "#970747",
 };
 
 export default function RootLayout({
@@ -123,7 +123,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en-IN" className={`${jakarta.variable} ${fraunces.variable}`}>
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased overflow-x-hidden w-full">
         <DentistSchema />
         {children}
       </body>

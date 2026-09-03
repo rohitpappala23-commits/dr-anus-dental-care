@@ -56,7 +56,7 @@ export default function HomePage() {
           pb-16 reserves room for the fixed MobileActionBar so it never
           overlaps the last section on small screens; lg:pb-0 removes that
           reserve on desktop where the bar is hidden. */}
-      <main className="pb-16 lg:pb-0">
+      <main className="pb-20 lg:pb-0 w-full overflow-x-hidden">
         <HeroSection onBookClick={() => openModal()} />
 
         <ServicesSection

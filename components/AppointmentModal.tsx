@@ -44,7 +44,7 @@ function Field({ label, htmlFor, required, children }: FieldProps) {
 }
 
 const inputClasses =
-  "w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition-all duration-150 focus:border-[#970747] focus:ring-2 focus:ring-[#970747]/20 placeholder:text-slate-400";
+  "w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-base text-slate-900 outline-none transition-all duration-150 focus:border-[#970747] focus:ring-2 focus:ring-[#970747]/20 placeholder:text-slate-400";
 
 export function AppointmentModal({
   isOpen,
@@ -137,10 +137,10 @@ export function AppointmentModal({
       />
 
       {/* ── Modal container ── */}
-      <div className="fixed inset-0 flex items-center justify-center p-4">
+      <div className="fixed inset-0 flex items-center justify-center px-4 py-6">
         <div
           className={cn(
-            "relative max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-slate-200 bg-white shadow-2xl transition-all duration-300",
+            "relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-slate-200 bg-white shadow-2xl transition-all duration-300",
             isOpen ? "translate-y-0 opacity-100 scale-100" : "translate-y-6 opacity-0 scale-95",
           )}
         >
