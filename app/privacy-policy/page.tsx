@@ -82,7 +82,7 @@ export default function PrivacyPolicyPage() {
 
           <h2 className="text-lg font-semibold text-slate-900 mt-6 mb-2">4. WhatsApp Communication</h2>
           <p>
-            Clicking "Book via WhatsApp" opens WhatsApp with a pre-filled
+            Clicking {"\"Book via WhatsApp\""} opens WhatsApp with a pre-filled
             message on your device. Any subsequent communication via WhatsApp
             is governed by{" "}
             <a
@@ -91,7 +91,7 @@ export default function PrivacyPolicyPage() {
               rel="noopener noreferrer"
               className="text-[#970747] underline"
             >
-              WhatsApp's own Privacy Policy
+              WhatsApp&apos;s own Privacy Policy
             </a>
             .
           </p>
@@ -106,7 +106,7 @@ export default function PrivacyPolicyPage() {
               rel="noopener noreferrer"
               className="text-[#970747] underline"
             >
-              Google's Privacy Policy
+              Google&apos;s Privacy Policy
             </a>{" "}
             for details.
           </p>

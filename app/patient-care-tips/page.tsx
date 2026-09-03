@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { TopBar } from "@/components/TopBar";
 import { Footer } from "@/components/Footer";
 import { MobileActionBar } from "@/components/MobileActionBar";
@@ -23,20 +24,20 @@ export default function PatientCareTipsPage() {
       <TopBar />
       <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center gap-4 px-6 py-3">
-          <a
+          <Link
             href="/"
             className="font-display text-xl font-semibold text-slate-900 transition-opacity hover:opacity-80"
           >
             Dr. Anu&apos;s{" "}
             <span className="text-[#970747]">Dental Care</span>
-          </a>
+          </Link>
           <nav className="ml-auto" aria-label="Quick nav">
-            <a
+            <Link
               href="/"
               className="text-sm font-medium text-slate-600 transition-colors hover:text-[#970747]"
             >
               ← Back to Home
-            </a>
+            </Link>
           </nav>
         </div>
       </header>
