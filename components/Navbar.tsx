@@ -308,110 +308,95 @@ export function Navbar({ onBookClick }: NavbarProps) {
         </div>
       </div>
 
-      {/* ── Mobile drawer ─────────────────────────────────────────────────── */}
-      <div
-        id="mobile-menu"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Navigation menu"
-        inert={!mobileOpen}
-        className="fixed inset-0 z-50 lg:hidden"
-      >
-        {/* Scrim */}
+      {/* ── Mobile drawer (full screen z-[100] overlay) ────────────────── */}
+      {mobileOpen && (
         <div
-          aria-hidden
-          onClick={closeMobile}
-          className={cn(
-            "absolute inset-0 bg-slate-900/50 transition-opacity duration-300",
-            mobileOpen ? "opacity-100" : "opacity-0",
-          )}
-        />
-
-        {/* Drawer panel */}
-        <div
-          className={cn(
-            "absolute inset-y-0 right-0 flex w-[85%] max-w-sm flex-col overflow-y-auto bg-white shadow-2xl transition-transform duration-300",
-            mobileOpen ? "translate-x-0" : "translate-x-full",
-          )}
+          id="mobile-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation menu"
+          className="fixed inset-0 z-[100] bg-white flex flex-col px-6 py-6 overflow-y-auto lg:hidden"
         >
-          {/* Drawer header */}
-          <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
-            <div className="flex flex-col leading-tight">
-              <span className="font-display text-lg font-semibold text-slate-900">
+          {/* Header row */}
+          <div className="flex items-center justify-between pb-5 border-b border-slate-100 shrink-0">
+            <div>
+              <span className="text-lg font-bold text-slate-900 block leading-tight">
                 Dr. Anu&apos;s Dental Care
               </span>
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-[#970747]">
+              <span className="block text-xs font-semibold text-[#970747] tracking-wider uppercase mt-0.5">
                 {BUSINESS.subtitle}
               </span>
             </div>
             <button
               type="button"
               onClick={closeMobile}
-              aria-label="Close navigation menu"
+              className="p-2 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors cursor-pointer"
+              aria-label="Close menu"
               suppressHydrationWarning
-              className="inline-flex size-9 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition-colors hover:border-[#970747] hover:text-[#970747]"
             >
-              <X className="size-5" aria-hidden />
+              <X className="w-6 h-6" />
             </button>
           </div>
 
-          {/* Drawer body links */}
-          <nav className="flex-1 px-5 py-4" aria-label="Mobile navigation">
-            {/* Services accordion */}
-            <button
-              type="button"
-              aria-expanded={mobileServicesOpen}
-              suppressHydrationWarning
-              onClick={() => setMobileServicesOpen((o) => !o)}
-              className={cn(
-                "flex w-full items-center justify-between py-3 text-left text-sm font-semibold",
-                isServicesActive ? "text-[#970747]" : "text-slate-900",
-              )}
-            >
-              Services
-              <ChevronDown
+          {/* Nav links */}
+          <nav className="flex flex-col gap-3 py-6 text-base font-medium text-slate-800 flex-1" aria-label="Mobile navigation">
+            {/* Services Accordion */}
+            <div>
+              <button
+                type="button"
+                aria-expanded={mobileServicesOpen}
+                suppressHydrationWarning
+                onClick={() => setMobileServicesOpen((o) => !o)}
                 className={cn(
-                  "size-4 transition-transform duration-200",
-                  mobileServicesOpen && "rotate-180",
+                  "flex w-full items-center justify-between py-2.5 text-left font-semibold cursor-pointer transition-colors text-base",
+                  isServicesActive ? "text-[#970747]" : "text-slate-800 hover:text-[#970747]",
                 )}
-                aria-hidden
-              />
-            </button>
+              >
+                <span>Services</span>
+                <ChevronDown
+                  className={cn(
+                    "size-5 transition-transform duration-200 text-slate-500",
+                    mobileServicesOpen && "rotate-180 text-[#970747]",
+                  )}
+                  aria-hidden
+                />
+              </button>
 
-            {mobileServicesOpen && (
-              <div className="mb-2 space-y-4 rounded-xl border border-slate-200 bg-[#fdf2f6]/50 p-3">
-                {SERVICE_MENU.map((category) => (
-                  <div key={category.title}>
-                    <Link
-                      href={category.href}
-                      onClick={closeMobile}
-                      className="flex items-center gap-2 text-sm font-semibold text-[#970747]"
-                    >
-                      <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-[#fdf2f6] text-[#970747]">
-                        {(() => {
-                          const Icon = CATEGORY_ICONS[category.icon];
-                          return <Icon className="size-3" aria-hidden />;
-                        })()}
-                      </span>
-                      {category.title}
-                    </Link>
-                    <ul className="mt-1.5 space-y-1.5 pl-7">
-                      {category.items.map((item) => (
-                        <li key={item.href}>
-                          <Link
-                            href={item.href}
-                            onClick={closeMobile}
-                            className="text-sm text-slate-500 hover:text-[#970747]"
-                          >
-                            {item.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            )}
+              {mobileServicesOpen && (
+                <div className="mt-2 mb-2 space-y-4 rounded-xl border border-slate-200 bg-[#fdf2f6]/50 p-4">
+                  {SERVICE_MENU.map((category) => (
+                    <div key={category.title}>
+                      <Link
+                        href={category.href}
+                        onClick={closeMobile}
+                        className="flex items-center gap-2 text-sm font-semibold text-[#970747]"
+                      >
+                        <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-[#fdf2f6] text-[#970747]">
+                          {(() => {
+                            const Icon = CATEGORY_ICONS[category.icon];
+                            return <Icon className="size-3" aria-hidden />;
+                          })()}
+                        </span>
+                        {category.title}
+                      </Link>
+                      <ul className="mt-1.5 space-y-1.5 pl-7">
+                        {category.items.map((item) => (
+                          <li key={item.href}>
+                            <Link
+                              href={item.href}
+                              onClick={closeMobile}
+                              className="text-sm text-slate-600 hover:text-[#970747]"
+                            >
+                              {item.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* Flat nav links */}
             {NAV_LINKS.map((link) => {
@@ -423,8 +408,8 @@ export function Navbar({ onBookClick }: NavbarProps) {
                   onClick={closeMobile}
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
-                    "block border-t border-slate-200 py-3 text-sm font-semibold transition-colors",
-                    isActive ? "text-[#970747]" : "text-slate-900 hover:text-[#970747]",
+                    "py-2.5 font-medium transition-colors border-t border-slate-100 text-base",
+                    isActive ? "text-[#970747] font-semibold" : "text-slate-800 hover:text-[#970747]",
                   )}
                 >
                   {link.label}
@@ -434,41 +419,40 @@ export function Navbar({ onBookClick }: NavbarProps) {
           </nav>
 
           {/* Drawer footer CTAs */}
-          <div className="space-y-2 border-t border-slate-200 px-5 py-4">
-            <Button
+          <div className="mt-auto pt-6 border-t border-slate-100 flex flex-col gap-3 shrink-0">
+            <button
+              type="button"
               onClick={() => {
                 closeMobile();
                 onBookClick();
               }}
-              className="w-full"
+              className="w-full py-3.5 bg-[#970747] hover:bg-[#83063d] text-white font-semibold rounded-xl text-center shadow-md transition-colors flex items-center justify-center gap-2 cursor-pointer text-base"
+              suppressHydrationWarning
             >
-              <CalendarCheck className="size-4" aria-hidden />
+              <CalendarCheck className="size-5" aria-hidden />
               Book Appointment
-            </Button>
+            </button>
 
-            {BUSINESS.telephone.map((phone) => (
-              <Button
-                key={phone}
-                href={`tel:${phone.replace(/\s+/g, "")}`}
-                variant="secondary"
-                className="w-full"
-              >
-                <Phone className="size-4" aria-hidden />
-                Call {phone}
-              </Button>
-            ))}
+            <a
+              href={`tel:${BUSINESS.telephone[0].replace(/\s+/g, "")}`}
+              className="w-full py-3 bg-[#fdf2f6] hover:bg-[#fbe6ee] text-[#970747] border border-[#f8d0df] font-semibold rounded-xl text-center transition-colors flex items-center justify-center gap-2 text-sm"
+            >
+              <Phone className="size-4" aria-hidden />
+              Call {BUSINESS.telephone[0]}
+            </a>
 
-            <Button
+            <a
               href={BUSINESS.whatsappUrl}
-              variant="secondary"
-              className="w-full"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-3 bg-[#25d366] hover:bg-[#20bd5a] text-white font-semibold rounded-xl text-center shadow-sm transition-colors flex items-center justify-center gap-2 text-sm"
             >
               <MessageCircle className="size-4" aria-hidden />
               WhatsApp Us
-            </Button>
+            </a>
           </div>
         </div>
-      </div>
+      )}
     </header>
   );
 }
