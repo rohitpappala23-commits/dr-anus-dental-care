@@ -7,8 +7,6 @@ import {
   Menu,
   X,
   ChevronDown,
-  Phone,
-  MessageCircle,
   CalendarCheck,
   Sparkles,
   AlignCenter,
@@ -114,11 +112,11 @@ export function Navbar({ onBookClick }: NavbarProps) {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 border-b bg-white/95 backdrop-blur transition-shadow duration-200",
-        scrolled ? "border-slate-200 shadow-sm" : "border-transparent",
+        "sticky top-0 z-50 border-b bg-white/95 backdrop-blur-md transition-shadow duration-200",
+        scrolled ? "border-slate-200 shadow-sm" : "border-slate-100",
       )}
     >
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-2 sm:gap-4 px-4 sm:px-6 py-3">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-2 sm:gap-4 px-4 sm:px-6 py-3 min-h-[64px]">
 
         {/* ── Brand ── */}
         <Link
@@ -299,47 +297,30 @@ export function Navbar({ onBookClick }: NavbarProps) {
             aria-haspopup="dialog"
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
-            aria-label="Open navigation menu"
+            aria-label={mobileOpen ? "Close menu" : "Open navigation menu"}
             suppressHydrationWarning
-            onClick={() => setMobileOpen(true)}
+            onClick={() => setMobileOpen((o) => !o)}
           >
-            <Menu className="size-5" aria-hidden />
+            {mobileOpen ? (
+              <X className="size-5" aria-hidden />
+            ) : (
+              <Menu className="size-5" aria-hidden />
+            )}
           </button>
         </div>
       </div>
 
-      {/* ── Mobile drawer (full screen z-[100] overlay) ────────────────── */}
+      {/* ── Mobile Menu Overlay ── */}
       {mobileOpen && (
         <div
           id="mobile-menu"
           role="dialog"
           aria-modal="true"
           aria-label="Navigation menu"
-          className="fixed inset-0 z-[100] bg-white flex flex-col px-6 py-6 overflow-y-auto lg:hidden"
+          className="fixed inset-0 top-[64px] z-50 bg-white flex flex-col px-6 py-6 overflow-y-auto border-t border-slate-100 shadow-2xl lg:hidden"
+          style={{ height: "calc(100dvh - 64px)" }}
         >
-          {/* Header row */}
-          <div className="flex items-center justify-between pb-5 border-b border-slate-100 shrink-0">
-            <div>
-              <span className="text-lg font-bold text-slate-900 block leading-tight">
-                Dr. Anu&apos;s Dental Care
-              </span>
-              <span className="block text-xs font-semibold text-[#970747] tracking-wider uppercase mt-0.5">
-                {BUSINESS.subtitle}
-              </span>
-            </div>
-            <button
-              type="button"
-              onClick={closeMobile}
-              className="p-2 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors cursor-pointer"
-              aria-label="Close menu"
-              suppressHydrationWarning
-            >
-              <X className="w-6 h-6" />
-            </button>
-          </div>
-
-          {/* Nav links */}
-          <nav className="flex flex-col gap-3 py-6 text-base font-medium text-slate-800 flex-1" aria-label="Mobile navigation">
+          <nav className="flex flex-col divide-y divide-slate-100 text-base font-semibold text-slate-800 flex-1" aria-label="Mobile navigation">
             {/* Services Accordion */}
             <div>
               <button
@@ -348,14 +329,14 @@ export function Navbar({ onBookClick }: NavbarProps) {
                 suppressHydrationWarning
                 onClick={() => setMobileServicesOpen((o) => !o)}
                 className={cn(
-                  "flex w-full items-center justify-between py-2.5 text-left font-semibold cursor-pointer transition-colors text-base",
+                  "flex w-full items-center justify-between py-4 text-left font-semibold cursor-pointer transition-colors text-base",
                   isServicesActive ? "text-[#970747]" : "text-slate-800 hover:text-[#970747]",
                 )}
               >
                 <span>Services</span>
                 <ChevronDown
                   className={cn(
-                    "size-5 transition-transform duration-200 text-slate-500",
+                    "size-5 transition-transform duration-200 text-slate-400",
                     mobileServicesOpen && "rotate-180 text-[#970747]",
                   )}
                   aria-hidden
@@ -363,7 +344,7 @@ export function Navbar({ onBookClick }: NavbarProps) {
               </button>
 
               {mobileServicesOpen && (
-                <div className="mt-2 mb-2 space-y-4 rounded-xl border border-slate-200 bg-[#fdf2f6]/50 p-4">
+                <div className="mb-4 space-y-4 rounded-xl border border-slate-200 bg-[#fdf2f6]/50 p-4">
                   {SERVICE_MENU.map((category) => (
                     <div key={category.title}>
                       <Link
@@ -398,57 +379,50 @@ export function Navbar({ onBookClick }: NavbarProps) {
               )}
             </div>
 
-            {/* Flat nav links */}
-            {NAV_LINKS.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={closeMobile}
-                  aria-current={isActive ? "page" : undefined}
-                  className={cn(
-                    "py-2.5 font-medium transition-colors border-t border-slate-100 text-base",
-                    isActive ? "text-[#970747] font-semibold" : "text-slate-800 hover:text-[#970747]",
-                  )}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
+            <Link
+              href="/about"
+              onClick={closeMobile}
+              className="py-4 hover:text-[#970747] flex items-center justify-between transition-colors"
+            >
+              <span>About Dr. Anusha</span>
+              <span className="text-slate-400">›</span>
+            </Link>
+
+            <Link
+              href="/patient-care-tips"
+              onClick={closeMobile}
+              className="py-4 hover:text-[#970747] flex items-center justify-between transition-colors"
+            >
+              <span>Patient Care Tips</span>
+              <span className="text-slate-400">›</span>
+            </Link>
+
+            <Link
+              href="/location"
+              onClick={closeMobile}
+              className="py-4 hover:text-[#970747] flex items-center justify-between transition-colors"
+            >
+              <span>Timings & Location</span>
+              <span className="text-slate-400">›</span>
+            </Link>
           </nav>
 
-          {/* Drawer footer CTAs */}
-          <div className="mt-auto pt-6 border-t border-slate-100 flex flex-col gap-3 shrink-0">
+          <div className="mt-8 flex flex-col gap-3 shrink-0">
             <button
-              type="button"
               onClick={() => {
                 closeMobile();
-                onBookClick();
+                onBookClick?.();
               }}
-              className="w-full py-3.5 bg-[#970747] hover:bg-[#83063d] text-white font-semibold rounded-xl text-center shadow-md transition-colors flex items-center justify-center gap-2 cursor-pointer text-base"
+              className="w-full py-3.5 bg-[#970747] hover:bg-[#83063d] text-white font-bold rounded-xl text-center shadow-md active:scale-95 transition-all cursor-pointer text-base"
               suppressHydrationWarning
             >
-              <CalendarCheck className="size-5" aria-hidden />
               Book Appointment
             </button>
-
             <a
               href={`tel:${BUSINESS.telephone[0].replace(/\s+/g, "")}`}
-              className="w-full py-3 bg-[#fdf2f6] hover:bg-[#fbe6ee] text-[#970747] border border-[#f8d0df] font-semibold rounded-xl text-center transition-colors flex items-center justify-center gap-2 text-sm"
+              className="w-full py-3 border border-[#970747]/30 text-[#970747] font-semibold rounded-xl text-center hover:bg-[#fdf2f6] transition-colors text-sm"
             >
-              <Phone className="size-4" aria-hidden />
-              Call {BUSINESS.telephone[0]}
-            </a>
-
-            <a
-              href={BUSINESS.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-3 bg-[#25d366] hover:bg-[#20bd5a] text-white font-semibold rounded-xl text-center shadow-sm transition-colors flex items-center justify-center gap-2 text-sm"
-            >
-              <MessageCircle className="size-4" aria-hidden />
-              WhatsApp Us
+              Call Clinic: {BUSINESS.telephone[0]}
             </a>
           </div>
         </div>
