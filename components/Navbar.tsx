@@ -273,20 +273,9 @@ export function Navbar({ onBookClick }: NavbarProps) {
           })}
         </nav>
 
-        {/* ── Desktop CTA + Mobile buttons ── */}
+        {/* ── Action Buttons ── */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-          {/* Mobile quick book icon button */}
-          <button
-            type="button"
-            onClick={onBookClick}
-            aria-label="Book Appointment"
-            className="inline-flex size-9 items-center justify-center rounded-full bg-[#970747] text-white hover:bg-[#83063d] shadow-sm lg:hidden cursor-pointer"
-            suppressHydrationWarning
-          >
-            <CalendarCheck className="size-4" aria-hidden />
-          </button>
-
-          <Button onClick={onBookClick} className="hidden lg:inline-flex">
+          <Button onClick={onBookClick} className="hidden sm:inline-flex">
             <CalendarCheck className="size-4" aria-hidden />
             Book Appointment
           </Button>
