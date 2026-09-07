@@ -42,19 +42,38 @@ export interface TreatmentItem {
   recovery: string;
 }
 
-const U = "https://images.unsplash.com";
-
 /** All 14 treatments offered at the clinic, categorised into 5 clusters. */
 export const TREATMENTS: TreatmentItem[] = [
-  // ── Cosmetic & Smile ──────────────────────────────────────────────────────
+  {
+    slug: "child-dentistry",
+    name: "Child Dental Treatment",
+    category: "Pediatric & Preventive",
+    imageUrl: "/services/child-dental-treatment.jpg",
+    imageAlt: "Child Dental Treatment",
+    summary:
+      "Gentle, fear-free pediatric dental care focused on building healthy lifelong oral hygiene habits.",
+    overview:
+      "Paediatric dental care at Dr. Anu's Dental Care focuses on making each visit relaxed and positive for your child. Treatments include fluoride application (to strengthen enamel), pit and fissure sealants (to seal the grooves where decay starts), milk-tooth fillings, gentle pulpotomies (nerve treatment for primary teeth), and space maintainers if a milk tooth is lost early.",
+    duration: "20 – 45 minutes",
+    anaesthesia: "Topical + local (only when needed, child-dose adjusted)",
+    benefits: [
+      "Fear-free, child-friendly environment",
+      "Prevents cavities early with fluoride and sealants",
+      "Parents welcome in the operatory",
+      "Builds positive dental habits for life",
+      "Space maintainers prevent future crowding",
+    ],
+    recovery:
+      "No special recovery for preventive visits. After any filling, avoid hard or sticky foods for 1 hour. Mild sensitivity passes within 24 hours.",
+  },
   {
     slug: "teeth-cleaning",
     name: "Teeth Cleaning & Polishing",
     category: "Pediatric & Preventive",
-    imageUrl: `${U}/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80`,
-    imageAlt: "Ultrasonic teeth cleaning and polishing at dental clinic PM Palem Visakhapatnam",
+    imageUrl: "/services/teeth-cleaning-polishing.jpg",
+    imageAlt: "Teeth Cleaning & Polishing",
     summary:
-      "Ultrasonic scaling removes stubborn tartar and stains; polishing restores the natural shine of your enamel.",
+      "Ultrasonic scaling removes stubborn tartar and stains; polishing restores natural enamel shine.",
     overview:
       "Professional cleaning goes far beyond a normal brush — our ultrasonic scaler breaks up calculus deposits that form below the gumline, which ordinary toothbrushing simply cannot reach. After scaling, a fine-grain polishing paste smooths the enamel surface, making it harder for new plaque to grip. Recommended every 6 months for all patients.",
     duration: "30 – 45 minutes",
@@ -69,145 +88,15 @@ export const TREATMENTS: TreatmentItem[] = [
       "Mild sensitivity for 24–48 hours is normal. Avoid very hot or cold drinks the same day. Resume normal eating immediately.",
   },
   {
-    slug: "smile-designing",
-    name: "Smile Designing",
-    category: "Cosmetic & Smile",
-    imageUrl: `${U}/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80`,
-    imageAlt: "Digital smile design consultation at Dr. Anu's Dental Care Visakhapatnam",
-    summary:
-      "A personalised, digitally planned aesthetic makeover that transforms your smile using veneers, whitening, bonding, or contouring.",
-    overview:
-      "Smile designing begins with a digital smile analysis — we photograph your teeth, lips, and facial proportions and use design software to preview the final result before any work begins. The treatment plan combines the right cosmetic procedures (veneers, whitening, gum contouring, bonding) in the correct sequence to achieve natural, proportionate results tailored to your face.",
-    duration: "Consultation: 30 min · Treatment: 1–3 sessions",
-    anaesthesia: "Local (if veneers/bonding involved)",
-    benefits: [
-      "Fully customised to your facial features",
-      "Preview results digitally before treatment",
-      "Combination of minimally invasive techniques",
-      "Long-lasting results (8–15 years with care)",
-    ],
-    recovery:
-      "Post-treatment sensitivity is minimal. Avoid staining foods for the first 48 hours after whitening is completed.",
-  },
-  {
-    slug: "teeth-whitening",
-    name: "Teeth Whitening",
-    category: "Cosmetic & Smile",
-    imageUrl: `${U}/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80`,
-    imageAlt: "Laser LED teeth whitening treatment Visakhapatnam dental clinic",
-    summary:
-      "In-office laser / LED whitening lifts deep stains by 4–8 shades in a single session.",
-    overview:
-      "We use a high-concentration peroxide gel activated by LED light to break apart intrinsic and extrinsic staining molecules. A single 60-minute in-office session can lighten teeth by 4–8 shades. Take-home bleaching kits with custom-fitted trays are also provided for gradual maintenance between visits.",
-    duration: "60 – 90 minutes (in-office)",
-    anaesthesia: "None",
-    benefits: [
-      "Immediate, dramatic shade improvement",
-      "Safe with professional-grade materials",
-      "Custom-fit take-home trays for maintenance",
-      "Boosts confidence and appearance",
-    ],
-    recovery:
-      "Avoid coloured foods and drinks (coffee, tea, red wine, curries) for 48 hours. Sensitivity usually subsides within 24 hours.",
-  },
-  {
-    slug: "tooth-jewellery",
-    name: "Tooth Jewellery",
-    category: "Cosmetic & Smile",
-    imageUrl: `${U}/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=800&q=80`,
-    imageAlt: "Non-invasive dental crystal tooth jewellery cosmetic dentistry Visakhapatnam",
-    summary:
-      "Non-invasive, reversible dental crystals and gems bonded painlessly to your tooth surface for a sparkling accent.",
-    overview:
-      "Tooth jewellery is bonded to the enamel surface using dental-grade adhesive — no drilling, no enamel removal. The gem (Swarovski crystal or coloured stone) is placed in minutes and can be removed at any time without any damage. It's a fun, reversible cosmetic enhancement popular with teens and young adults.",
-    duration: "10 – 15 minutes",
-    anaesthesia: "None",
-    benefits: [
-      "Completely non-invasive and reversible",
-      "No drilling or enamel removal",
-      "Wide range of crystal colours and styles",
-      "Lasts 6 months to several years",
-    ],
-    recovery: "No downtime. Avoid hard biting near the gem for the first 24 hours while the adhesive fully cures.",
-  },
-  {
-    slug: "cosmetic-dental-treatment",
-    name: "Cosmetic Dental Treatment & Veneers",
-    category: "Cosmetic & Smile",
-    imageUrl: `${U}/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80`,
-    imageAlt: "Ceramic porcelain veneers cosmetic bonding dental contouring Visakhapatnam",
-    summary:
-      "Ceramic veneers, composite bonding, and tooth contouring to correct chips, gaps, discolouration, and shape.",
-    overview:
-      "Cosmetic dentistry covers a spectrum of treatments — from a simple composite bonding repair (completed in one visit, no anaesthesia) to ultra-thin porcelain veneers that are custom-fabricated in a lab and permanently bonded to the front face of teeth. Dr. Anusha recommends the least invasive option that achieves the desired result.",
-    duration: "1–2 visits (bonding: 45 min; veneers: 2 × 60 min)",
-    anaesthesia: "Minimal local for veneers; none for bonding",
-    benefits: [
-      "Conceals chips, cracks, gaps, and stains",
-      "Natural-looking ceramic shade matching",
-      "Minimal tooth reduction required for veneers",
-      "Instant results with composite bonding",
-    ],
-    recovery:
-      "Mild sensitivity for 24–48 hours after veneer placement. Full normal function resumes immediately.",
-  },
-
-  // ── Orthodontics ──────────────────────────────────────────────────────────
-  {
-    slug: "clear-aligners",
-    name: "Clear Aligners",
-    category: "Orthodontics",
-    imageUrl: `${U}/photo-1572021335469-31706a17aaef?auto=format&fit=crop&w=800&q=80`,
-    imageAlt: "Invisible clear aligners Invisalign-style orthodontic treatment Visakhapatnam",
-    summary:
-      "Invisible, removable custom aligners straighten teeth discreetly — no metal wires, no food restrictions.",
-    overview:
-      "Clear aligners are a series of precisely engineered, see-through plastic trays that gently shift teeth into alignment over 6–18 months. Each tray is worn for approximately 2 weeks before advancing to the next in the series. Because they are removable, you can eat, brush, and floss completely normally — no dietary restrictions or hygiene compromises.",
-    duration: "Total treatment: 6–18 months",
-    anaesthesia: "None",
-    benefits: [
-      "Nearly invisible during wear",
-      "Removable for eating and brushing",
-      "No metal components or sharp wires",
-      "Fewer clinic visits than traditional braces",
-      "Comfortable smooth plastic trays",
-    ],
-    recovery:
-      "Mild pressure and slight lisp for 1–2 days with each new tray. No special recovery needed.",
-  },
-  {
-    slug: "braces",
-    name: "Braces (Orthodontics)",
-    category: "Orthodontics",
-    imageUrl: `${U}/photo-1572021335469-31706a17aaef?auto=format&fit=crop&w=800&q=80`,
-    imageAlt: "Metal ceramic self-ligating braces orthodontic treatment PM Palem Visakhapatnam",
-    summary:
-      "Metal and ceramic self-ligating brackets for precise, reliable teeth alignment for teens and adults.",
-    overview:
-      "Traditional braces use metal or ceramic brackets bonded to each tooth and connected by a wire that is progressively tightened to guide teeth into the correct position. Ceramic brackets are tooth-coloured for a less conspicuous look. Self-ligating brackets reduce friction and may shorten treatment time. Regular monthly adjustment visits at the clinic are required.",
-    duration: "12 – 24 months",
-    anaesthesia: "None",
-    benefits: [
-      "Effective for complex misalignment cases",
-      "Ceramic option for a less visible look",
-      "Predictable, well-established treatment",
-      "Suitable from age 10 upwards",
-    ],
-    recovery:
-      "Soreness for 3–5 days after each monthly adjustment is normal. Soft foods are recommended during that window.",
-  },
-
-  // ── Restorative & Implants ────────────────────────────────────────────────
-  {
     slug: "dental-implants",
     name: "Dental Implants",
     category: "Restorative & Implants",
-    imageUrl: `${U}/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=800&q=80`,
-    imageAlt: "Titanium dental implant surgery permanent tooth replacement Visakhapatnam",
+    imageUrl: "/services/dental-implants.jpg",
+    imageAlt: "Dental Implants",
     summary:
-      "Titanium screw implants permanently replace missing teeth — feel, look, and function exactly like natural teeth.",
+      "Permanent, natural-looking tooth replacement that restores full chewing strength and facial aesthetics.",
     overview:
-      "A dental implant is a titanium post surgically placed into the jawbone where it fuses with bone over 3–6 months (osseointegration). Once integrated, a custom-made ceramic crown is attached on top, giving you a tooth that looks, feels, and functions exactly like a natural one. Implants also prevent the bone resorption that occurs when a tooth root is missing.",
+      "A dental implant is a titanium post surgically placed into the jawbone where it fuses with bone over 3–6 months (osseointegration). Once integrated, a custom-made ceramic crown is attached on top, giving you a tooth that looks, feels, and functions exactly like a natural one. Implants also prevent jawbone resorption.",
     duration: "Surgery: 1–2 hours · Crown placement: 3–6 months later",
     anaesthesia: "Local anaesthesia (conscious, comfortable throughout)",
     benefits: [
@@ -224,12 +113,12 @@ export const TREATMENTS: TreatmentItem[] = [
     slug: "root-canal-treatment",
     name: "Root Canal Treatment (RCT)",
     category: "Restorative & Implants",
-    imageUrl: `${U}/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80`,
-    imageAlt: "Single sitting painless root canal treatment RCT dental clinic Visakhapatnam",
+    imageUrl: "/services/root-canal-treatment.jpg",
+    imageAlt: "Root Canal Treatment (RCT)",
     summary:
-      "Single-sitting painless RCT removes infected pulp and seals the canal — saves your natural tooth from extraction.",
+      "Single-sitting, pain-free infection elimination that saves your natural tooth structure.",
     overview:
-      "Root canal treatment is performed when the nerve tissue (pulp) inside a tooth is infected or inflamed due to deep decay, trauma, or a cracked tooth. Using rotary files under local anaesthesia, the infected pulp is removed, the canal cleaned and shaped, then sealed with an inert material. A crown is placed afterwards to protect the treated tooth. Modern single-sitting RCT is nearly painless.",
+      "Root canal treatment is performed when the nerve tissue (pulp) inside a tooth is infected or inflamed due to deep decay, trauma, or a cracked tooth. Using rotary files under local anaesthesia, the infected pulp is removed, the canal cleaned and shaped, then sealed with an inert material. A crown is placed afterwards for protection.",
     duration: "60 – 90 minutes (single sitting)",
     anaesthesia: "Local anaesthesia",
     benefits: [
@@ -243,15 +132,37 @@ export const TREATMENTS: TreatmentItem[] = [
       "Mild soreness for 2–3 days after treatment. Pain relief medications are prescribed. Avoid hard foods on that side until the crown is placed.",
   },
   {
+    slug: "braces",
+    name: "Braces and Aligners",
+    category: "Orthodontics",
+    imageUrl: "/services/braces-and-aligners.jpg",
+    imageAlt: "Braces and Aligners",
+    summary:
+      "Combine traditional/ceramic braces and clear invisible aligners for precision smile alignment at any age.",
+    overview:
+      "Our orthodontic solutions combine traditional/ceramic braces and clear invisible aligners tailored to your lifestyle. Whether you choose discreet clear trays or self-ligating aesthetic brackets, we deliver precise tooth movement and bite alignment for teens and adults.",
+    duration: "Total treatment: 6–24 months",
+    anaesthesia: "None",
+    benefits: [
+      "Nearly invisible aligner options",
+      "Ceramic and metal brace choices",
+      "Precision bite and smile alignment",
+      "Suitable for teens and adults",
+      "Fewer clinic visits with digital planning",
+    ],
+    recovery:
+      "Mild pressure for 2–3 days after initial fitting or tray change. Soft foods recommended during initial adjustment.",
+  },
+  {
     slug: "dentures",
     name: "Removable & Fixed Dentures",
     category: "Restorative & Implants",
-    imageUrl: `${U}/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80`,
-    imageAlt: "Complete partial removable fixed dentures tooth replacement Visakhapatnam",
+    imageUrl: "/services/dentures.jpg",
+    imageAlt: "Removable & Fixed Dentures",
     summary:
-      "Complete and partial dentures — removable, flexible, or fixed — for full-arch or multi-tooth replacement.",
+      "Custom-fitted prosthetic solutions that restore chewing ability, bite support, and daily comfort.",
     overview:
-      "Dentures replace missing teeth when multiple or all teeth are absent. Complete dentures replace the entire upper or lower arch; partial dentures fill gaps when some natural teeth remain. Flexible valplast partials offer a more comfortable, metallic-free alternative. Fixed dentures (bridges) are permanently cemented and do not need removal. Dr. Anusha selects the type best suited to your bone density and lifestyle.",
+      "Dentures replace missing teeth when multiple or all teeth are absent. Complete dentures replace the entire upper or lower arch; partial dentures fill gaps when some natural teeth remain. Flexible valplast partials offer a comfortable, metallic-free alternative, while fixed bridges provide permanent stability.",
     duration: "3–5 visits over 2–4 weeks",
     anaesthesia: "None (removable); local (for fixed bridge preparation)",
     benefits: [
@@ -264,15 +175,57 @@ export const TREATMENTS: TreatmentItem[] = [
       "Adjustment period of 2–4 weeks for comfort and speech. Minor sore spots are normal and addressed at follow-up visits.",
   },
   {
+    slug: "smile-designing",
+    name: "Smile Designing",
+    category: "Cosmetic & Smile",
+    imageUrl: "/services/smile-designing.jpg",
+    imageAlt: "Smile Designing",
+    summary:
+      "Digitally planned aesthetic smile makeovers combining veneers, whitening, and artistic re-contouring.",
+    overview:
+      "Smile designing begins with a digital smile analysis — we photograph your teeth, lips, and facial proportions and use design software to preview the final result before any work begins. The treatment plan combines veneers, whitening, gum contouring, and bonding for natural, proportionate results.",
+    duration: "Consultation: 30 min · Treatment: 1–3 sessions",
+    anaesthesia: "Local (if veneers/bonding involved)",
+    benefits: [
+      "Fully customised to your facial features",
+      "Preview results digitally before treatment",
+      "Combination of minimally invasive techniques",
+      "Long-lasting results (8–15 years with care)",
+    ],
+    recovery:
+      "Post-treatment sensitivity is minimal. Avoid staining foods for the first 48 hours after whitening is completed.",
+  },
+  {
+    slug: "teeth-whitening",
+    name: "Teeth Whitening",
+    category: "Cosmetic & Smile",
+    imageUrl: "/services/teeth-whitening.jpg",
+    imageAlt: "Teeth Whitening",
+    summary:
+      "In-office laser and LED teeth whitening lifting deep stains by multiple shades safely and quickly.",
+    overview:
+      "We use a high-concentration peroxide gel activated by LED light to break apart intrinsic and extrinsic staining molecules. A single 60-minute in-office session can lighten teeth by 4–8 shades quickly and safely.",
+    duration: "60 – 90 minutes (in-office)",
+    anaesthesia: "None",
+    benefits: [
+      "Immediate, dramatic shade improvement",
+      "Safe with professional-grade materials",
+      "Custom-fit take-home trays for maintenance",
+      "Boosts confidence and appearance",
+    ],
+    recovery:
+      "Avoid coloured foods and drinks (coffee, tea, red wine, curries) for 48 hours. Sensitivity usually subsides within 24 hours.",
+  },
+  {
     slug: "fillings",
     name: "Tooth Fillings",
     category: "Restorative & Implants",
-    imageUrl: `${U}/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80`,
-    imageAlt: "Tooth-coloured composite resin filling decay restoration dental clinic Visakhapatnam",
+    imageUrl: "/services/tooth-fillings.jpg",
+    imageAlt: "Tooth Fillings",
     summary:
-      "Tooth-coloured composite fillings restore decayed or chipped teeth invisibly — no silver amalgam.",
+      "Tooth-colored composite resin fillings that invisibly restore cavities with long-lasting bonding.",
     overview:
-      "Composite resin (tooth-coloured) fillings are bonded directly to the tooth after the decayed portion is removed, restoring the tooth's original shape and function. Unlike old amalgam fillings, composites require less tooth removal, look natural, and do not contain mercury. They are suitable for both front and back teeth.",
+      "Composite resin (tooth-coloured) fillings are bonded directly to the tooth after the decayed portion is removed, restoring the tooth's original shape and function. Unlike old amalgam fillings, composites look completely natural and bond strongly.",
     duration: "30 – 60 minutes",
     anaesthesia: "Local anaesthesia",
     benefits: [
@@ -285,23 +238,21 @@ export const TREATMENTS: TreatmentItem[] = [
     recovery:
       "Mild sensitivity to cold for 1–2 weeks is common. Avoid very hard foods for 24 hours while the filling fully cures.",
   },
-
-  // ── Surgery & Gums ────────────────────────────────────────────────────────
   {
     slug: "oral-surgery",
     name: "Oral Surgery (Major / Minor)",
     category: "Surgery & Gums",
-    imageUrl: `${U}/photo-1551076805-e1869033e561?auto=format&fit=crop&w=800&q=80`,
-    imageAlt: "Impacted wisdom tooth extraction oral surgery minor major Visakhapatnam",
+    imageUrl: "/services/oral-surgery.jpg",
+    imageAlt: "Oral Surgery (Major / Minor)",
     summary:
-      "Impacted wisdom tooth removal, cyst removal, jaw trauma care — performed under safe, precise local anaesthesia.",
+      "Wisdom tooth extractions and minor surgical interventions performed under sterile, gentle anesthesia.",
     overview:
-      "Minor oral surgery covers straightforward extractions and soft-tissue procedures; major oral surgery includes impacted wisdom teeth (partially or fully embedded in the jaw), cyst enucleation, alveoloplasty, and jaw-related trauma management. All procedures are performed under local anaesthesia with careful haemostasis and suturing to ensure fast, uneventful healing.",
+      "Minor oral surgery covers extractions and soft-tissue procedures; major oral surgery includes impacted wisdom teeth, cyst enucleation, and jaw-related procedures. All procedures are performed under local anaesthesia with careful haemostasis and suturing.",
     duration: "30 – 90 minutes depending on complexity",
-    anaesthesia: "Local anaesthesia (IV sedation option available on request)",
+    anaesthesia: "Local anaesthesia",
     benefits: [
       "Eliminates source of infection or crowding",
-      "Precision cutting with minimal trauma",
+      "Precision procedure with minimal trauma",
       "Hospital-grade sterilised instruments",
       "Sutures and post-op care included",
     ],
@@ -310,14 +261,14 @@ export const TREATMENTS: TreatmentItem[] = [
   },
   {
     slug: "gum-surgeries",
-    name: "Gum Problems & Surgeries",
+    name: "Gum Problems",
     category: "Surgery & Gums",
-    imageUrl: `${U}/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=800&q=80`,
-    imageAlt: "Gum disease flap surgery periodontal treatment deep curettage Visakhapatnam",
+    imageUrl: "/services/gum-problems.jpg",
+    imageAlt: "Gum Problems",
     summary:
-      "Deep curettage, flap surgery, and gum contouring for bleeding gums, periodontitis, and receding gumlines.",
+      "Comprehensive periodontic therapies treating bleeding gums, gingivitis, and loose tooth foundations.",
     overview:
-      "Gum disease (periodontitis) is one of the leading causes of adult tooth loss and is also linked to heart disease and diabetes. When regular cleaning is insufficient, deep curettage (root planing under local anaesthesia) removes bacteria from below the gumline. Advanced cases may require flap surgery to access deep pockets and regenerate lost bone. Gum contouring reshapes uneven or excessive gum tissue for aesthetic improvement.",
+      "Gum disease (periodontitis) is a primary cause of tooth mobility and loss. When routine cleaning is insufficient, deep curettage (root planing under local anaesthesia) removes bacteria from below the gumline. Advanced cases may receive periodontic flap therapy or contouring.",
     duration: "45 – 90 minutes per quadrant",
     anaesthesia: "Local anaesthesia",
     benefits: [
@@ -327,31 +278,49 @@ export const TREATMENTS: TreatmentItem[] = [
       "Improves smile aesthetics with contouring",
     ],
     recovery:
-      "Soreness and swelling for 3–5 days post-surgery. Chlorhexidine mouthwash and antibiotics are prescribed. Avoid spicy or hard foods for 1 week.",
+      "Soreness and swelling for 3–5 days post-procedure. Chlorhexidine mouthwash and antibiotics are prescribed as needed.",
   },
-
-  // ── Pediatric & Preventive ────────────────────────────────────────────────
   {
-    slug: "child-dentistry",
-    name: "Child Dental Treatment",
-    category: "Pediatric & Preventive",
-    imageUrl: `${U}/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=800&q=80`,
-    imageAlt: "Pediatric child dental treatment fluoride sealants gentle kids dentist Visakhapatnam",
+    slug: "cosmetic-dental-treatment",
+    name: "Cosmetic Dental Treatment & Veneers",
+    category: "Cosmetic & Smile",
+    imageUrl: "/services/cosmetic-veneers.jpg",
+    imageAlt: "Cosmetic Dental Treatment & Veneers",
     summary:
-      "Gentle, fear-free dental care for children — fluoride treatments, sealants, and milk-tooth restorations.",
+      "Ultra-thin porcelain or composite laminates tailored to fix chips, gaps, and surface discoloration.",
     overview:
-      "Paediatric dental care at Dr. Anu's Dental Care focuses on making each visit relaxed and positive for your child. Treatments include fluoride application (to strengthen enamel), pit and fissure sealants (to seal the grooves where decay starts), milk-tooth fillings, gentle pulpotomies (nerve treatment for primary teeth), and space maintainers if a milk tooth is lost early.",
-    duration: "20 – 45 minutes",
-    anaesthesia: "Topical + local (only when needed, child-dose adjusted)",
+      "Cosmetic dentistry covers a spectrum of enhancements — from composite bonding repairs completed in one visit to ultra-thin porcelain veneers permanently bonded to the front of teeth for a flawless smile.",
+    duration: "1–2 visits (bonding: 45 min; veneers: 2 × 60 min)",
+    anaesthesia: "Minimal local for veneers; none for bonding",
     benefits: [
-      "Fear-free, child-friendly environment",
-      "Prevents cavities early with fluoride and sealants",
-      "Parents welcome in the operatory",
-      "Builds positive dental habits for life",
-      "Space maintainers prevent future crowding",
+      "Conceals chips, cracks, gaps, and stains",
+      "Natural-looking ceramic shade matching",
+      "Minimal tooth reduction required for veneers",
+      "Instant results with composite bonding",
     ],
     recovery:
-      "No special recovery for preventive visits. After any filling, avoid hard or sticky foods for 1 hour. Mild sensitivity passes within 24 hours.",
+      "Mild sensitivity for 24–48 hours after veneer placement. Full normal function resumes immediately.",
+  },
+  {
+    slug: "tooth-jewellery",
+    name: "Tooth Jewellery",
+    category: "Cosmetic & Smile",
+    imageUrl: "/services/tooth-jewellery.jpg",
+    imageAlt: "Tooth Jewellery",
+    summary:
+      "Non-invasive, reversible dental crystals and gems bonded painlessly for an elegant accent.",
+    overview:
+      "Tooth jewellery is bonded to the enamel surface using dental-grade adhesive — no drilling, no enamel removal. The gem (Swarovski crystal or stone) is placed in minutes and can be removed at any time without damage.",
+    duration: "10 – 15 minutes",
+    anaesthesia: "None",
+    benefits: [
+      "Completely non-invasive and reversible",
+      "No drilling or enamel removal",
+      "Wide range of crystal colours and styles",
+      "Lasts 6 months to several years",
+    ],
+    recovery:
+      "No downtime. Avoid hard biting near the gem for the first 24 hours while the adhesive fully cures.",
   },
 ];
 

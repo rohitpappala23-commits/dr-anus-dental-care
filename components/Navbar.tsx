@@ -419,3 +419,5 @@ export function Navbar({ onBookClick }: NavbarProps) {
     </header>
   );
 }
+
+export default Navbar;

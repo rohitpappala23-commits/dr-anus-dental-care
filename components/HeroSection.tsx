@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
-export default function HeroSection({ onBookClick }: { onBookClick?: () => void }) {
+export function HeroSection({ onBookClick }: { onBookClick?: () => void }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [imgError, setImgError] = useState(false);
 
@@ -52,7 +52,7 @@ export default function HeroSection({ onBookClick }: { onBookClick?: () => void 
           <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight drop-shadow-sm break-words">
             Advanced, Gentle <br />
             <span className="text-[#970747]">Multispeciality Dental</span><br />
-            Care in PM Palem
+            Care in Madhurawada
           </h1>
 
           <p className="text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed">
@@ -94,15 +94,18 @@ export default function HeroSection({ onBookClick }: { onBookClick?: () => void 
           </div>
         </div>
 
-        {/* Right Column: Doctor Image Card */}
-        <div className="flex-1 w-full max-w-lg lg:max-w-none relative mt-6 lg:mt-0">
-          <div className="absolute -top-5 right-2 sm:-right-4 bg-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg border border-slate-100 z-20 text-xs sm:text-sm font-bold text-slate-700 flex items-center gap-1.5 sm:gap-2">
-            ⭐ 4.9 Rating <span className="text-slate-300">|</span>{" "}
-            <span className="font-normal text-slate-500">Trusted by PM Palem</span>
-          </div>
+        {/* Right Column: Doctor Image */}
+        <div className="flex-1 w-full max-w-lg lg:max-w-none relative mt-6 lg:mt-0 flex flex-col items-center justify-center">
+          {/* Avatar Container with Floating Rating Badge */}
+          <div className="relative">
+            {/* Top Rating Badge */}
+            <div className="absolute -top-4 -right-2 sm:-right-4 bg-white/95 backdrop-blur-md px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg border border-slate-100 z-20 text-xs sm:text-sm font-bold text-slate-700 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
+              ⭐ 4.9 Rating <span className="text-slate-300">|</span>{" "}
+              <span className="font-normal text-slate-500">Trusted by Madhurawada</span>
+            </div>
 
-          <div className="bg-white p-5 sm:p-6 md:p-8 rounded-[2rem] shadow-2xl border border-slate-100 relative max-w-full">
-            <div className="aspect-square relative rounded-full overflow-hidden border-4 sm:border-8 border-[#970747]/10 w-2/3 sm:w-3/4 mx-auto mb-6">
+            {/* Circular Doctor Avatar Container */}
+            <div className="relative mx-auto w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl bg-gradient-to-b from-pink-50 to-pink-100 flex items-center justify-center">
               {imgError ? (
                 <div className="flex h-full w-full items-center justify-center rounded-full bg-gradient-to-br from-[#970747] to-[#580329] text-3xl sm:text-4xl font-bold text-white">
                   PA
@@ -110,7 +113,7 @@ export default function HeroSection({ onBookClick }: { onBookClick?: () => void 
               ) : (
                 <Image
                   src="/dr-anusha.jpg"
-                  alt="Dr. P. Anusha BDS FAGE Manipal Dental Surgeon PM Palem Visakhapatnam"
+                  alt="Dr. P. Anusha BDS FAGE Manipal Dental Surgeon Madhurawada Visakhapatnam"
                   fill
                   className="object-cover object-top"
                   priority
@@ -118,19 +121,20 @@ export default function HeroSection({ onBookClick }: { onBookClick?: () => void 
                 />
               )}
             </div>
+          </div>
 
-            <div className="bg-slate-50 rounded-2xl p-3.5 sm:p-4 border border-slate-100">
-              <div className="flex items-center gap-2.5 sm:gap-3 text-slate-700 mb-2">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#970747] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <span className="font-medium text-xs sm:text-sm">Surya Medicare, Near Last Bus Stop</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-emerald-600">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
-                Accepting New Patients Today
-              </div>
+          {/* Bottom Rectangular Location Card */}
+          <div className="w-full max-w-sm sm:max-w-md mt-4 bg-white rounded-2xl p-4 sm:p-5 shadow-xl border border-slate-100">
+            <div className="flex items-center gap-2.5 sm:gap-3 text-slate-700 mb-2">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#970747] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span className="font-medium text-xs sm:text-sm">Surya Medicare, Near Last Bus Stop</span>
+            </div>
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-emerald-600">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
+              Accepting New Patients Today
             </div>
           </div>
         </div>
@@ -139,3 +143,5 @@ export default function HeroSection({ onBookClick }: { onBookClick?: () => void 
     </section>
   );
 }
+
+export default HeroSection;

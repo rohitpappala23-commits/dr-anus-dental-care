@@ -12,16 +12,6 @@ import {
 } from "@/lib/treatmentsData";
 import { TreatmentDetailModal } from "@/components/TreatmentDetailModal";
 
-/**
- * Maps each category to a wine-tinted colour pair for badges.
- */
-const CATEGORY_COLORS: Record<TreatmentCategory, { bg: string; text: string }> = {
-  "Cosmetic & Smile":       { bg: "#970747", text: "#ffffff" },
-  "Orthodontics":           { bg: "#970747", text: "#ffffff" },
-  "Restorative & Implants": { bg: "#970747", text: "#ffffff" },
-  "Surgery & Gums":         { bg: "#970747", text: "#ffffff" },
-  "Pediatric & Preventive": { bg: "#970747", text: "#ffffff" },
-};
 
 type ServicesSectionProps = {
   /** Opens the AppointmentModal with the selected treatment pre-filled. */
@@ -60,9 +50,8 @@ export function ServicesSection({ onBookClick }: ServicesSectionProps) {
 
             <p className="mt-4 text-base leading-relaxed text-slate-600">
               From routine check-ups to advanced surgical procedures, every
-              treatment at our PM Palem clinic is delivered with clinical
-              precision, pain-free techniques, and hospital-grade sterilized
-              technology.
+              treatment at our clinic is delivered with clinical precision,
+              pain-free techniques, and hospital-grade sterilized technology.
             </p>
           </div>
 
@@ -141,18 +130,16 @@ interface TreatmentCardProps {
 }
 
 function TreatmentCard({ treatment, onViewDetails, onBookClick }: TreatmentCardProps) {
-  const { bg, text } = CATEGORY_COLORS[treatment.category];
-
   return (
     <article
       role="listitem"
-      className="group flex flex-col overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+      className="group flex flex-col h-full overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl bg-[#970747]"
     >
       {/* Cover image */}
-      <div className="relative aspect-[16/9] shrink-0 overflow-hidden">
+      <div className="relative aspect-[4/3] shrink-0 overflow-hidden">
         <Image
           src={treatment.imageUrl}
-          alt={treatment.imageAlt}
+          alt={treatment.name}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -163,28 +150,22 @@ function TreatmentCard({ treatment, onViewDetails, onBookClick }: TreatmentCardP
           className="absolute inset-0 bg-gradient-to-t from-[#970747]/90 via-[#970747]/10 to-transparent"
           aria-hidden
         />
-
-        {/* Category badge */}
-        <span
-          className="absolute bottom-3 left-3 rounded-full border border-[#83063d]/40 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider shadow-sm"
-          style={{ background: bg, color: text }}
-        >
-          {treatment.category}
-        </span>
       </div>
 
       {/* Card body — solid brand wine background */}
-      <div className="flex flex-1 flex-col bg-[#970747] px-4 pb-4 pt-3">
-        <h3 className="text-sm font-bold text-white leading-snug">
-          {treatment.name}
-        </h3>
+      <div className="flex flex-1 flex-col justify-between p-4.5 sm:p-5">
+        <div>
+          <h3 className="text-base font-bold text-white leading-snug">
+            {treatment.name}
+          </h3>
 
-        <p className="mt-1.5 flex-1 text-xs leading-relaxed text-white/85">
-          {treatment.summary}
-        </p>
+          <p className="mt-2 text-xs leading-relaxed text-white/90">
+            {treatment.summary}
+          </p>
+        </div>
 
         {/* Actions */}
-        <div className="mt-4 flex items-center gap-3">
+        <div className="mt-5 flex items-center justify-between gap-3 pt-3 border-t border-white/15">
           <button
             type="button"
             suppressHydrationWarning
@@ -198,13 +179,11 @@ function TreatmentCard({ treatment, onViewDetails, onBookClick }: TreatmentCardP
             />
           </button>
 
-          <span className="h-3.5 w-px bg-white/25" aria-hidden />
-
           <button
             type="button"
             suppressHydrationWarning
             onClick={() => onBookClick(treatment.name)}
-            className="rounded-full bg-white px-3 py-1 text-xs font-bold text-[#970747] transition-colors hover:bg-pink-100 cursor-pointer"
+            className="rounded-full bg-white px-3.5 py-1.5 text-xs font-bold text-[#970747] shadow-sm transition-all hover:bg-pink-50 active:scale-95 cursor-pointer"
           >
             Book →
           </button>
@@ -213,3 +192,5 @@ function TreatmentCard({ treatment, onViewDetails, onBookClick }: TreatmentCardP
     </article>
   );
 }
+
+export default ServicesSection;

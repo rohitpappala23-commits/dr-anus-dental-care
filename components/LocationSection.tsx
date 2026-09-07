@@ -4,9 +4,6 @@ import { BUSINESS, MAPS_URL, DOCTOR } from "@/lib/constants";
 
 /** Full address, timings, landmark directions, and Google Maps embed. */
 export function LocationSection() {
-  const mapQuery = encodeURIComponent(
-    `${BUSINESS.address.streetAddress}, ${BUSINESS.address.addressLocality}, Visakhapatnam, ${BUSINESS.address.addressRegion} ${BUSINESS.address.postalCode}`,
-  );
 
   const primaryPhone = BUSINESS.telephone[0];
   const primaryPhoneHref = `tel:${primaryPhone.replace(/\s+/g, "")}`;
@@ -29,12 +26,11 @@ export function LocationSection() {
             id="location-section-heading"
             className="mt-4 text-3xl font-semibold text-slate-900 sm:text-4xl"
           >
-            Find Us in PM Palem, Visakhapatnam
+            Find Us in Madhurawada, Visakhapatnam
           </h2>
 
           <p className="mt-4 text-base leading-relaxed text-slate-600">
-            Conveniently located near the PM Palem last bus stop — walk in,
-            call ahead, or tap to get turn-by-turn directions.
+            Conveniently located in Madhurawada — walk in, call ahead, or tap to get turn-by-turn directions.
           </p>
         </div>
 
@@ -179,13 +175,15 @@ export function LocationSection() {
           {/* ── Right: embedded Google Maps iframe ── */}
           <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md min-h-[400px]">
             <iframe
-              src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
-              title={`Map showing the location of ${BUSINESS.name} at Surya Medicare, Bobby NKM Apartment, near the Last Bus Stop, PM Palem, Visakhapatnam`}
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3798.502016629731!2d83.3517173!3d17.8147132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a395b03a0205c01%3A0xd5975a6c1920272e!2sDr.%20Anu's%20Dental%20Clinic!5e0!3m2!1sen!2sin!4v1741191000000!5m2!1sen!2sin"
+              title={`Map showing the location of ${BUSINESS.name}`}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-              style={{ border: 0 }}
-              className="h-full min-h-[400px] w-full lg:min-h-[560px]"
+              className="w-full h-full rounded-2xl min-h-[400px]"
             />
           </div>
         </div>
@@ -193,3 +191,5 @@ export function LocationSection() {
     </section>
   );
 }
+
+export default LocationSection;

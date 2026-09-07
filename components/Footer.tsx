@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, MessageCircle, Clock, BadgeCheck } from "lucide-react";
-import { BUSINESS, DOCTOR, NAV_LINKS, SERVICE_MENU, MAPS_URL } from "@/lib/constants";
+import { BUSINESS, DOCTOR, NAV_LINKS, SERVICE_MENU } from "@/lib/constants";
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -36,7 +36,7 @@ export function Footer() {
 
             {/* Description */}
             <p className="mt-4 text-sm leading-relaxed text-slate-200">
-              Multispeciality dental clinic in PM Palem, Visakhapatnam —
+              Multispeciality dental clinic in Madhurawada, Visakhapatnam —
               offering advanced, pain-free treatments for every member of your
               family.
             </p>
@@ -199,7 +199,7 @@ export function Footer() {
               {/* Address */}
               <li>
                 <a
-                  href={MAPS_URL}
+                  href="https://maps.app.goo.gl/SuojbrSAMtNsQKPA7"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Open clinic location in Google Maps"
@@ -209,7 +209,7 @@ export function Footer() {
                     <MapPin className="size-3.5" aria-hidden />
                   </span>
                   <span className="leading-relaxed">
-                    {BUSINESS.shortAddress}
+                    Dr. Anu&apos;s Dental Care, Bobby NKM Apt, PM Palem, Visakhapatnam
                   </span>
                 </a>
               </li>
@@ -246,3 +246,5 @@ export function Footer() {
     </footer>
   );
 }
+
+export default Footer;

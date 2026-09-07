@@ -79,3 +79,5 @@ export function MobileActionBar() {
     </nav>
   );
 }
+
+export default MobileActionBar;

@@ -193,9 +193,9 @@ export function FAQSection() {
           </h2>
 
           <p className="mt-4 text-base leading-relaxed text-slate-600">
-            Everything patients in PM Palem and Visakhapatnam most often ask
-            us before their first visit — covering location, timings, treatments,
-            and emergencies.
+            These are the questions patients in PM Palem and Visakhapatnam most
+            often ask us before their first visit — covering location, timings,
+            treatments, and emergencies.
           </p>
         </div>
 
@@ -232,3 +232,5 @@ export function FAQSection() {
     </section>
   );
 }
+
+export default FAQSection;

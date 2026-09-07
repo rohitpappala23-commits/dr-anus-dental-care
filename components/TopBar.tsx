@@ -1,3 +1,5 @@
+"use client";
+
 import { MapPin, Phone, Clock } from "lucide-react";
 import { BUSINESS } from "@/lib/constants";
 
@@ -93,3 +95,5 @@ export function TopBar() {
     </div>
   );
 }
+
+export default TopBar;

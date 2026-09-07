@@ -211,3 +211,5 @@ export function PatientCareTips() {
     </section>
   );
 }
+
+export default PatientCareTips;

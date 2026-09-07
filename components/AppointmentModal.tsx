@@ -369,3 +369,5 @@ export function AppointmentModal({
     </div>
   );
 }
+
+export default AppointmentModal;
