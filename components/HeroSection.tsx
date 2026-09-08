@@ -3,7 +3,13 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
-export function HeroSection({ onBookClick }: { onBookClick?: () => void }) {
+export function HeroSection({
+  onBookClick,
+  onTestimonialsClick,
+}: {
+  onBookClick?: () => void;
+  onTestimonialsClick?: () => void;
+}) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [imgError, setImgError] = useState(false);
 
@@ -98,11 +104,16 @@ export function HeroSection({ onBookClick }: { onBookClick?: () => void }) {
         <div className="flex-1 w-full max-w-lg lg:max-w-none relative mt-6 lg:mt-0 flex flex-col items-center justify-center">
           {/* Avatar Container with Floating Rating Badge */}
           <div className="relative">
-            {/* Top Rating Badge */}
-            <div className="absolute -top-4 -right-2 sm:-right-4 bg-white/95 backdrop-blur-md px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg border border-slate-100 z-20 text-xs sm:text-sm font-bold text-slate-700 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
-              ⭐ 4.9 Rating <span className="text-slate-300">|</span>{" "}
-              <span className="font-normal text-slate-500">Trusted by Madhurawada</span>
-            </div>
+            {/* Top Rating Badge — Clickable trigger for TestimonialsModal */}
+            <button
+              type="button"
+              onClick={onTestimonialsClick}
+              aria-label="View local family testimonials"
+              className="absolute -top-4 -right-2 sm:-right-4 bg-white/95 backdrop-blur-md px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg border border-slate-100 z-20 text-xs sm:text-sm font-bold text-slate-700 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap hover:scale-105 hover:shadow-xl transition-all cursor-pointer group"
+            >
+              <span className="text-amber-500 group-hover:scale-110 transition-transform">⭐</span> 4.9 Rating <span className="text-slate-300">|</span>{" "}
+              <span className="font-normal text-slate-500 group-hover:text-[#970747] transition-colors">Trusted by Madhurawada</span>
+            </button>
 
             {/* Circular Doctor Avatar Container */}
             <div className="relative mx-auto w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl bg-gradient-to-b from-pink-50 to-pink-100 flex items-center justify-center">

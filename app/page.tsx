@@ -12,29 +12,17 @@ import { PatientCareTips } from "@/components/PatientCareTips";
 import { FAQSection } from "@/components/FAQSection";
 import { LocationSection } from "@/components/LocationSection";
 import { AppointmentModal } from "@/components/AppointmentModal";
+import { TestimonialsModal } from "@/components/TestimonialsModal";
 
 /**
- * Homepage — assembles every section and manages the single shared
- * modal state so any CTA across the page (Navbar, Hero, ServicesSection
- * cards, mobile drawer) seamlessly opens the AppointmentModal with the
- * correct service pre-selected.
- *
- * State:
- *  - `isModalOpen`     — controls modal visibility
- *  - `selectedService` — pre-fills the "Selected Treatment" dropdown;
- *                        undefined when opened from a generic "Book" CTA
+ * Homepage — assembles every section and manages shared modal states
+ * (AppointmentModal and TestimonialsModal) so CTAs seamlessly trigger modals.
  */
 export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isTestimonialsOpen, setIsTestimonialsOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<string | undefined>();
 
-  /**
-   * Opens the modal and optionally pre-selects a treatment cluster.
-   * Called by:
-   *  - Navbar "Book Appointment" button  → no treatment preset
-   *  - Hero "Book an Appointment" button → no treatment preset
-   *  - ServicesSection card CTA          → passes the card's cluster title
-   */
   function openModal(service?: string) {
     setSelectedService(service);
     setIsModalOpen(true);
@@ -42,7 +30,6 @@ export default function HomePage() {
 
   function closeModal() {
     setIsModalOpen(false);
-    // Delay clearing so the success/closing animation doesn't flicker
     setTimeout(() => setSelectedService(undefined), 350);
   }
 
@@ -52,12 +39,12 @@ export default function HomePage() {
       <TopBar />
       <Navbar onBookClick={() => openModal()} />
 
-      {/* ── Page body ──
-          pb-16 reserves room for the fixed MobileActionBar so it never
-          overlaps the last section on small screens; lg:pb-0 removes that
-          reserve on desktop where the bar is hidden. */}
+      {/* ── Page body ── */}
       <main className="pb-20 lg:pb-0 w-full overflow-x-hidden">
-        <HeroSection onBookClick={() => openModal()} />
+        <HeroSection
+          onBookClick={() => openModal()}
+          onTestimonialsClick={() => setIsTestimonialsOpen(true)}
+        />
 
         <ServicesSection
           onBookClick={(service) => openModal(service)}
@@ -78,11 +65,18 @@ export default function HomePage() {
       {/* ── Fixed mobile bottom bar ── */}
       <MobileActionBar />
 
-      {/* ── Booking modal (z-[60] — above everything) ── */}
+      {/* ── Booking modal ── */}
       <AppointmentModal
         isOpen={isModalOpen}
         onClose={closeModal}
         defaultTreatment={selectedService}
+      />
+
+      {/* ── Testimonials modal ── */}
+      <TestimonialsModal
+        isOpen={isTestimonialsOpen}
+        onClose={() => setIsTestimonialsOpen(false)}
+        onBookClick={(treatment) => openModal(treatment)}
       />
     </>
   );
