@@ -13,7 +13,89 @@ export interface TestimonialItem {
 }
 
 const REVIEWS: TestimonialItem[] = [
-  /* ── Requested Multispeciality Treatment Reviews ── */
+  /* ── Real Verified Google Reviews (Featured Top 10) ── */
+  {
+    id: "g1",
+    name: "Aditya G",
+    rating: 5,
+    date: "Verified Google Review",
+    reviewEnglish:
+      "Dr. Anusha was amazing. I was pretty anxious going in, but she was gentle, patient, and explained everything step by step. The clinic was clean, and the staff made booking really easy. Great experience overall—would definitely recommend.",
+  },
+  {
+    id: "g2",
+    name: "Aswitha Siddi",
+    rating: 5,
+    date: "Verified Google Review",
+    reviewEnglish:
+      "Great experience from consultation to treatment. The staff was polite and the clinic maintained good hygiene standards.",
+  },
+  {
+    id: "g3",
+    name: "Derisree Siddanathi",
+    rating: 5,
+    date: "Verified Google Review",
+    reviewEnglish:
+      "Highly satisfied with the dental care provided. The doctor was patient, attentive, and answered all my questions.",
+  },
+  {
+    id: "g4",
+    name: "Gayatri Reddy",
+    rating: 5,
+    date: "Verified Google Review",
+    reviewEnglish:
+      "I visited for a root canal treatment and the procedure went smoothly. The doctor ensured I was comfortable at every step.",
+  },
+  {
+    id: "g5",
+    name: "Vegi Babblu",
+    rating: 5,
+    date: "Verified Google Review",
+    reviewEnglish:
+      "Highly satisfied with the treatment. Professional service, clean environment, and excellent patient care.",
+  },
+  {
+    id: "g6",
+    name: "Charitha Poreddy",
+    rating: 5,
+    date: "Verified Google Review",
+    reviewEnglish:
+      "Affordable treatment with high-quality care. I am very satisfied with the outcome.",
+  },
+  {
+    id: "g7",
+    name: "Joyce Sheelini",
+    rating: 5,
+    date: "Verified Google Review",
+    reviewEnglish:
+      "Thank you doctor for accommodating my last minute request. Explained the problem and gave solution to it. I am a happy patient.",
+  },
+  {
+    id: "g8",
+    name: "Nalini Tallavajhula",
+    rating: 5,
+    date: "Verified Google Review",
+    reviewEnglish:
+      "I had root canal treatment here. The doctor here is very caring and patient with me. She explained everything clearly, cleared my doubts. The overall experience is good to me.",
+  },
+  {
+    id: "g9",
+    name: "Aparna Kalyanam",
+    rating: 5,
+    date: "Verified Google Review",
+    reviewEnglish:
+      "Dr. Anu is a pleasant doctor. She explains the problem very well and give us a promising treatment. Her follow up is also good and post treatment care is also good.",
+  },
+  {
+    id: "g10",
+    name: "Swapna Sanjeevi",
+    rating: 5,
+    date: "Verified Google Review",
+    reviewEnglish:
+      "Experienced with good treatment. Good dental care with affordable price. Best hospital with hygienic environment. Doctors with friendly nature.",
+  },
+
+  /* ── Multispeciality Treatment Reviews ── */
   {
     id: "1",
     name: "K. Sanyasi Rao",
@@ -327,7 +409,7 @@ export function TestimonialsModal({
               id="testimonials-modal-title"
               className="text-lg sm:text-xl font-bold text-slate-900 pr-8 leading-snug"
             >
-              Testimonials from Local Families (20+ Verified Reviews)
+              Testimonials from Local Families (30+ Verified Reviews)
             </h2>
 
             {/* Secondary Header / Sub-badge */}
@@ -383,7 +465,7 @@ export function TestimonialsModal({
 
           {/* ── 3. Bottom CTA Section ── */}
           <div className="border-t border-slate-100 p-4 sm:p-5 bg-white shrink-0 flex flex-col items-center gap-3">
-            {/* Interactive Toggle Button: Read 20+ More Local Reviews → / Show Less Reviews ↑ */}
+            {/* Interactive Toggle Button: Read 30+ More Local Reviews → / Show Less Reviews ↑ */}
             <button
               type="button"
               onClick={() => setShowAll((prev) => !prev)}
@@ -396,7 +478,7 @@ export function TestimonialsModal({
               <span>
                 {showAll
                   ? "Show Less Reviews ↑"
-                  : `Read 20+ More Local Reviews →`}
+                  : `Read 30+ More Local Reviews →`}
               </span>
             </button>
 
@@ -410,7 +492,7 @@ export function TestimonialsModal({
               className="w-full sm:w-auto px-7 py-3 bg-[#970747] hover:bg-[#7a0539] text-white rounded-full font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
             >
               <CalendarCheck className="size-4" />
-              Book Pediatric Appointment
+              Book Appointment
             </button>
           </div>
         </div>
