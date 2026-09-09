@@ -104,16 +104,30 @@ export function HeroSection({
         <div className="flex-1 w-full max-w-lg lg:max-w-none relative mt-6 lg:mt-0 flex flex-col items-center justify-center">
           {/* Avatar Container with Floating Rating Badge */}
           <div className="relative">
-            {/* Top Rating Badge — Clickable trigger for TestimonialsModal */}
-            <button
-              type="button"
-              onClick={onTestimonialsClick}
-              aria-label="View local family testimonials"
-              className="absolute -top-4 -right-2 sm:-right-4 bg-white/95 backdrop-blur-md px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg border border-slate-100 z-20 text-xs sm:text-sm font-bold text-slate-700 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap hover:scale-105 hover:shadow-xl transition-all cursor-pointer group"
-            >
-              <span className="text-amber-500 group-hover:scale-110 transition-transform">⭐</span> 4.9 Rating <span className="text-slate-300">|</span>{" "}
-              <span className="font-normal text-slate-500 group-hover:text-[#970747] transition-colors">Trusted by Madhurawada</span>
-            </button>
+            {/* Rating Badge Container & Floating Tooltip */}
+            <div className="absolute -top-12 -right-2 sm:-right-4 z-20 flex flex-col items-end gap-1">
+              {/* Floating Helper Tooltip Badge */}
+              <button
+                type="button"
+                onClick={onTestimonialsClick}
+                aria-label="Click to view 20+ verified reviews"
+                className="group inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-bold px-3 py-1 bg-white/95 backdrop-blur-md text-[#970747] shadow-md border border-[#970747]/20 rounded-full animate-bounce cursor-pointer hover:scale-105 transition-all whitespace-nowrap"
+              >
+                <span>✨ Click here to view reviews</span>
+                <span className="text-[10px]" aria-hidden>👇</span>
+              </button>
+
+              {/* Top Rating Badge */}
+              <button
+                type="button"
+                onClick={onTestimonialsClick}
+                aria-label="View local family testimonials"
+                className="bg-white/95 backdrop-blur-md px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg border border-slate-100 text-xs sm:text-sm font-bold text-slate-700 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap hover:scale-105 hover:shadow-xl transition-all cursor-pointer group"
+              >
+                <span className="text-amber-500 group-hover:scale-110 transition-transform">⭐</span> 4.9 Rating <span className="text-slate-300">|</span>{" "}
+                <span className="font-normal text-slate-500 group-hover:text-[#970747] transition-colors">Trusted by Madhurawada</span>
+              </button>
+            </div>
 
             {/* Circular Doctor Avatar Container */}
             <div className="relative mx-auto w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl bg-gradient-to-b from-pink-50 to-pink-100 flex items-center justify-center">

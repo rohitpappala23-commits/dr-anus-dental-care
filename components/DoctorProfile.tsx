@@ -123,7 +123,7 @@ function DoctorPortrait() {
           {DOCTOR.displayName}
         </p>
         <p className="mt-0.5 text-xs font-medium text-[#970747]">
-          {DOCTOR.role}
+          {DOCTOR.role} • 9+ Years Experience
         </p>
       </div>
     </div>
@@ -238,7 +238,7 @@ export function DoctorProfile() {
             <strong className="font-semibold text-slate-800">
               {BUSINESS.name}
             </strong>{" "}
-            in PM Palem, Visakhapatnam. With training from the prestigious Manipal
+            in Madhurawada, Visakhapatnam. With training from the prestigious Manipal
             Academy of Higher Education, she brings specialist-level competence in
             restorative, cosmetic, orthodontic, and pediatric dentistry to every
             patient — all under one roof.

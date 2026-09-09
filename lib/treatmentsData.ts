@@ -135,7 +135,7 @@ export const TREATMENTS: TreatmentItem[] = [
     slug: "braces",
     name: "Braces and Aligners",
     category: "Orthodontics",
-    imageUrl: "/services/braces-and-aligners.jpg",
+    imageUrl: "/services/braces.jpg",
     imageAlt: "Braces and Aligners",
     summary:
       "Combine traditional/ceramic braces and clear invisible aligners for precision smile alignment at any age.",

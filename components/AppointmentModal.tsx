@@ -246,6 +246,13 @@ export function AppointmentModal({
                         suppressHydrationWarning
                       >
                         <option value="">Select a treatment or service</option>
+                        {treatment &&
+                          !SERVICE_MENU.some((c) =>
+                            c.items.some((i) => i.label === treatment)
+                          ) &&
+                          treatment !== "General Consultation" && (
+                            <option value={treatment}>{treatment}</option>
+                          )}
                         {SERVICE_MENU.map((category) => (
                           <optgroup key={category.title} label={category.title}>
                             {category.items.map((item) => (

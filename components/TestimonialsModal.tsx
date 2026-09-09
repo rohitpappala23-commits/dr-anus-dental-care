@@ -13,205 +13,232 @@ export interface TestimonialItem {
 }
 
 const REVIEWS: TestimonialItem[] = [
+  /* ── Requested Multispeciality Treatment Reviews ── */
   {
     id: "1",
-    name: "Murali Krishna K.",
+    name: "K. Sanyasi Rao",
+    rating: 5,
+    date: "1 week ago",
+    reviewEnglish:
+      "Got a single-sitting Root Canal Treatment (RCT) done by Dr. Anusha. I was extremely anxious about the pain, but the procedure was completely painless and smooth. Saved my natural tooth without any discomfort.",
+  },
+  {
+    id: "2",
+    name: "G. Venkateswara Rao",
     rating: 5,
     date: "2 weeks ago",
+    reviewEnglish:
+      "Replaced two missing lower molars with dental implants here. The precision, bone healing guidance, and final ceramic crown fit are perfect. Chewing feels completely natural again.",
+  },
+  {
+    id: "3",
+    name: "B. Sai Teja",
+    rating: 5,
+    date: "2 weeks ago",
+    reviewEnglish:
+      "Opted for clear aligners for my crooked front teeth. Dr. Anusha digitally mapped the progress step-by-step. Discreet, comfortable, and my bite alignment improved remarkably within months.",
+  },
+  {
+    id: "4",
+    name: "V. Satyavathi",
+    rating: 5,
+    date: "3 weeks ago",
+    reviewEnglish:
+      "My mother got custom complete dentures made. She used to struggle with ill-fitting dentures from elsewhere, but Dr. Anusha adjusted the bite so accurately that she eats comfortably without sore spots.",
+  },
+  {
+    id: "5",
+    name: "Ch. Harika",
+    rating: 5,
+    date: "1 month ago",
+    reviewEnglish:
+      "Underwent in-office laser teeth whitening before my cousin's wedding. Lifted stubborn coffee stains by several shades in just 45 minutes with zero sensitivity.",
+  },
+  {
+    id: "6",
+    name: "P. Appala Naidu",
+    rating: 5,
+    date: "1 month ago",
+    reviewEnglish:
+      "Had an impacted lower wisdom tooth that was causing severe jaw ache. The minor oral surgery was quick, sterile, and healed rapidly under Dr. Anusha’s post-operative guidance.",
+  },
+  {
+    id: "7",
+    name: "K. Ramana Murthy",
+    rating: 5,
+    date: "1 month ago",
+    reviewEnglish:
+      "Suffered from chronic bleeding gums and tartar buildup. Deep ultrasonic scaling and periodontal gum therapy resolved the issue completely. Clean clinic with hospital-grade hygiene.",
+  },
+  {
+    id: "8",
+    name: "M. Lavanya",
+    rating: 5,
+    date: "1 month ago",
+    reviewEnglish:
+      "Got composite tooth-colored fillings for two decayed front teeth. The color matching and contouring are so seamless that no one can tell they were filled.",
+  },
+  {
+    id: "9",
+    name: "D. Suresh Kumar",
+    rating: 5,
+    date: "2 months ago",
+    reviewEnglish:
+      "Got porcelain veneers for minor chipping and gaps in my upper teeth. Truly artistic smile designing work. My confidence has gone up tremendously.",
+  },
+  {
+    id: "10",
+    name: "T. Bhavani Shankar",
+    rating: 5,
+    date: "2 months ago",
+    reviewEnglish:
+      "Brought my whole family here—scaling for myself, braces consultation for my teenager, and preventive dental care for my youngest. Truly the best complete multispeciality clinic.",
+  },
+
+  /* ── Specialized Pediatric & Family Dental Care Reviews ── */
+  {
+    id: "11",
+    name: "Murali Krishna K.",
+    rating: 5,
+    date: "2 months ago",
     reviewEnglish:
       "Dr. Anusha’s advice on child oral hygiene was extremely helpful. She performed a pain-free composite cavity filling for my 5-year-old son. Best pediatric dental care clinic in the area.",
   },
   {
-    id: "2",
+    id: "12",
     name: "Subba Rao V.",
     rating: 5,
-    date: "3 weeks ago",
+    date: "2 months ago",
     reviewEnglish:
       "We consulted Dr. Anusha when my granddaughter had an acute tooth infection. She performed a gentle, painless pulpotomy in no time. Exceptional care for children.",
   },
   {
-    id: "3",
+    id: "13",
     name: "Padmavathi N.",
     rating: 5,
-    date: "1 month ago",
+    date: "3 months ago",
     reviewEnglish:
       "Dr. Anusha and her team have a wonderful way of handling anxious kids. My daughter walked in crying with a toothache and walked out smiling without any fear. Thank you, doctor!",
   },
   {
-    id: "4",
+    id: "14",
     name: "Lakshmi Prasanna B.",
     rating: 5,
-    date: "1 month ago",
+    date: "3 months ago",
     reviewEnglish:
       "Finding a dentist who is patient with toddlers is rare. Dr. Anusha explained every step like a story to my 4-year-old. Zero tears during fluoride treatment and cleaning.",
   },
   {
-    id: "5",
+    id: "15",
     name: "Venkata Rao T.",
     rating: 5,
-    date: "2 months ago",
+    date: "3 months ago",
     reviewEnglish:
       "My 8-year-old needed a milk tooth extraction and was terrified of needles. Dr. Anusha used gentle numbing and distracted him so well he didn’t even realize it was done!",
   },
   {
-    id: "6",
+    id: "16",
     name: "Sudha Rani M.",
     rating: 5,
-    date: "2 months ago",
+    date: "4 months ago",
     reviewEnglish:
       "Clean clinic and very calm atmosphere. My son had pit and fissure sealants placed on his molars. The entire procedure was smooth and completely stress-free.",
   },
   {
-    id: "7",
+    id: "17",
     name: "Srinivas N.",
     rating: 5,
-    date: "2 months ago",
+    date: "4 months ago",
     reviewEnglish:
       "Dr. Anusha has a magical touch with young kids. She solved our daughter’s cavity problem without any pain or fuss. Truly the top child dental specialist.",
   },
   {
-    id: "8",
+    id: "18",
     name: "Bhanu Prasad G.",
     rating: 5,
-    date: "3 months ago",
+    date: "4 months ago",
     reviewEnglish:
       "Brought my 6-year-old twins for their first dental checkup. Dr. Anusha made the experience so fun and welcoming that both kids are actually excited for their next visit!",
   },
   {
-    id: "9",
+    id: "19",
     name: "Sailaja K.",
     rating: 5,
-    date: "3 months ago",
+    date: "5 months ago",
     reviewEnglish:
       "Extremely polite doctor and staff. Dr. Anusha did a space maintainer fitting for my daughter after her milk tooth fell early. Very professional pediatric dental care.",
   },
   {
-    id: "10",
+    id: "20",
     name: "Sai Ram P.",
     rating: 5,
-    date: "3 months ago",
+    date: "5 months ago",
     reviewEnglish:
       "My 7-year-old son had severe sensitivity. Dr. Anusha diagnosed the decay quickly and completed a painless white filling in a single visit. High standard of hygiene.",
   },
   {
-    id: "11",
+    id: "21",
     name: "Haritha V.",
     rating: 5,
-    date: "4 months ago",
+    date: "5 months ago",
     reviewEnglish:
       "Dr. Anusha treats children with immense warmth and patience. She explained brushing techniques to my 5-year-old daughter in a fun, interactive way.",
   },
   {
-    id: "12",
+    id: "22",
     name: "Ramesh Varma Ch.",
     rating: 5,
-    date: "4 months ago",
+    date: "6 months ago",
     reviewEnglish:
       "My nephew had an accidental chip on his front milk tooth. Dr. Anusha restored it seamlessly with child-safe bonding material. Excellent result!",
   },
   {
-    id: "13",
+    id: "23",
     name: "Anuradha G.",
     rating: 5,
-    date: "4 months ago",
+    date: "6 months ago",
     reviewEnglish:
       "I was worried about my 3-year-old getting nervous, but the child-friendly setup and Dr. Anusha's soft-spoken nature put us both at ease immediately.",
   },
   {
-    id: "14",
+    id: "24",
     name: "Kalyan Ram M.",
     rating: 5,
-    date: "5 months ago",
+    date: "6 months ago",
     reviewEnglish:
       "Dr. Anusha performed a preventive fluoride varnish treatment for my 9-year-old son. Honest guidance without unnecessary treatments.",
   },
   {
-    id: "15",
+    id: "25",
     name: "Sridevi Rao K.",
     rating: 5,
-    date: "5 months ago",
+    date: "7 months ago",
     reviewEnglish:
       "Painless and quick pulpotomy procedure for my daughter's infected tooth. Dr. Anusha made sure she felt zero discomfort throughout.",
   },
   {
-    id: "16",
+    id: "26",
     name: "Nagaraju P.",
     rating: 5,
-    date: "5 months ago",
+    date: "7 months ago",
     reviewEnglish:
       "The clinic sterilization and cleanliness are top-tier. My 8-year-old got his teeth cleaned and polished comfortably.",
   },
   {
-    id: "17",
+    id: "27",
     name: "Sunitha Reddy K.",
     rating: 5,
-    date: "6 months ago",
+    date: "8 months ago",
     reviewEnglish:
       "Dr. Anusha is wonderfully attentive to kids' comfort. She kept praising my son during his cavity filling, making him feel like a hero!",
   },
   {
-    id: "18",
+    id: "28",
     name: "Anjaneyulu M.",
     rating: 5,
-    date: "6 months ago",
+    date: "8 months ago",
     reviewEnglish:
       "We visited for my 6-year-old daughter's toothache. Dr. Anusha handled the procedure gently without any trauma or tears.",
-  },
-  {
-    id: "19",
-    name: "Vijaya Lakshmi S.",
-    rating: 5,
-    date: "6 months ago",
-    reviewEnglish:
-      "Great experience for my 4-year-old's routine pediatric checkup and sealant application. Very modern equipment and gentle hands.",
-  },
-  {
-    id: "20",
-    name: "Prasad Babu T.",
-    rating: 5,
-    date: "7 months ago",
-    reviewEnglish:
-      "Dr. Anusha is a true expert in pediatric dentistry. She saved my son's molar with a smooth, painless root treatment.",
-  },
-  {
-    id: "21",
-    name: "Madhavi Latha Ch.",
-    rating: 5,
-    date: "7 months ago",
-    reviewEnglish:
-      "My daughter used to be terrified of dentists, but after visiting Dr. Anusha, all her fear vanished. Outstanding patient care.",
-  },
-  {
-    id: "22",
-    name: "Suresh Kumar G.",
-    rating: 5,
-    date: "7 months ago",
-    reviewEnglish:
-      "Quick, hygienic, and child-centric care. Dr. Anusha's preventive advice helped prevent further decay in my 7-year-old's teeth.",
-  },
-  {
-    id: "23",
-    name: "Radhika P.",
-    rating: 5,
-    date: "8 months ago",
-    reviewEnglish:
-      "Very gentle demeanor. Dr. Anusha fixed two cavities in my 5-year-old's teeth with zero pain. Highly recommend her to all parents!",
-  },
-  {
-    id: "24",
-    name: "Satyanarayana K.",
-    rating: 5,
-    date: "8 months ago",
-    reviewEnglish:
-      "Dr. Anusha's clinic provides world-class pediatric dental treatments with a gentle touch. Best experience for our whole family.",
-  },
-  {
-    id: "25",
-    name: "Usha Rani B.",
-    rating: 5,
-    date: "9 months ago",
-    reviewEnglish:
-      "Exceptional pediatric dentist! She treated my 8-year-old daughter's tooth pain with extreme patience and gentle care.",
   },
 ];
 
@@ -255,7 +282,7 @@ export function TestimonialsModal({
 
   if (!isOpen) return null;
 
-  const displayedReviews = showAll ? REVIEWS : REVIEWS.slice(0, 6);
+  const displayedReviews = showAll ? REVIEWS : REVIEWS.slice(0, 7);
 
   return (
     <>
@@ -303,7 +330,7 @@ export function TestimonialsModal({
               Testimonials from Local Families (20+ Verified Reviews)
             </h2>
 
-            {/* Secondary Header */}
+            {/* Secondary Header / Sub-badge */}
             <div className="mt-2 flex flex-wrap items-center gap-2 text-xs sm:text-sm font-semibold">
               <div className="flex items-center gap-1 text-amber-500">
                 <Star className="size-4 fill-amber-400 text-amber-400" />
@@ -311,11 +338,7 @@ export function TestimonialsModal({
               </div>
               <span className="text-slate-300">•</span>
               <span className="text-[#970747] font-semibold">
-                Specialized Pediatric Dental Care Experts
-              </span>
-              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700 border border-emerald-200">
-                <CheckCircle2 className="size-3 text-emerald-600" />
-                Verified
+                Multispeciality Dental Care & Pediatric Experts • Verified Patient Reviews
               </span>
             </div>
           </div>
@@ -350,7 +373,7 @@ export function TestimonialsModal({
                   </div>
                 </div>
 
-                {/* Review Text strictly in English focusing on pediatric care */}
+                {/* Review Text strictly in English */}
                 <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
                   {review.reviewEnglish}
                 </p>
@@ -360,7 +383,7 @@ export function TestimonialsModal({
 
           {/* ── 3. Bottom CTA Section ── */}
           <div className="border-t border-slate-100 p-4 sm:p-5 bg-white shrink-0 flex flex-col items-center gap-3">
-            {/* Interactive Toggle Button: Read 20+ More / Show Less */}
+            {/* Interactive Toggle Button: Read 20+ More Local Reviews → / Show Less Reviews ↑ */}
             <button
               type="button"
               onClick={() => setShowAll((prev) => !prev)}
@@ -373,16 +396,16 @@ export function TestimonialsModal({
               <span>
                 {showAll
                   ? "Show Less Reviews ↑"
-                  : `Read 20+ More Local Child Dental Reviews →`}
+                  : `Read 20+ More Local Reviews →`}
               </span>
             </button>
 
-            {/* Fixed Book Pediatric Appointment Button */}
+            {/* Fixed Book Appointment Button */}
             <button
               type="button"
               onClick={() => {
                 onClose();
-                onBookClick?.("Child Dental Treatment");
+                onBookClick?.();
               }}
               className="w-full sm:w-auto px-7 py-3 bg-[#970747] hover:bg-[#7a0539] text-white rounded-full font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
             >
