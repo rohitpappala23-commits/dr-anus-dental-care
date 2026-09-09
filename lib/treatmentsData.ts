@@ -220,7 +220,7 @@ export const TREATMENTS: TreatmentItem[] = [
     slug: "fillings",
     name: "Tooth Fillings",
     category: "Restorative & Implants",
-    imageUrl: "/services/tooth-fillings.jpg",
+    imageUrl: "/services/tooth-filling.jpg",
     imageAlt: "Tooth Fillings",
     summary:
       "Tooth-colored composite resin fillings that invisibly restore cavities with long-lasting bonding.",
