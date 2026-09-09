@@ -79,7 +79,7 @@ export const DOCTOR = {
   name: "Dr. P. Anusha",
   displayName: "Dr. P. ANUSHA",
   credentials: "BDS, FAGE (Manipal)",
-  role: "Dental Surgeon & Multispeciality Consultant",
+  role: "Dental Surgeon & Multispeciality Consultancy",
   registrationNumber: "A15265",
   // Precomposed so the hero badge's exact copy can't drift from the parts above.
   credentialBadge: "Led by Dr. P. ANUSHA — BDS, FAGE (Manipal) | Reg. No: A15265",

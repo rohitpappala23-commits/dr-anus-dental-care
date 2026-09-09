@@ -122,8 +122,8 @@ function DoctorPortrait() {
         <p className="font-display text-base font-semibold text-slate-900">
           {DOCTOR.displayName}
         </p>
-        <p className="mt-0.5 text-xs font-medium text-[#970747]">
-          {DOCTOR.role} • 9+ Years Experience
+        <p className="mt-0.5 text-xs font-medium text-[#970747] leading-relaxed">
+          Dental Surgeon &amp; Multispeciality Consultancy • 9+ Years Experience
         </p>
       </div>
     </div>
