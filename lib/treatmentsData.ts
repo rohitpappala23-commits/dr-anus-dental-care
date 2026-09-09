@@ -62,6 +62,7 @@ export const TREATMENTS: TreatmentItem[] = [
       "Parents welcome in the operatory",
       "Builds positive dental habits for life",
       "Space maintainers prevent future crowding",
+      "Kids Aligners are also available",
     ],
     recovery:
       "No special recovery for preventive visits. After any filling, avoid hard or sticky foods for 1 hour. Mild sensitivity passes within 24 hours.",

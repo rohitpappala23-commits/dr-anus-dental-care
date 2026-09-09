@@ -254,7 +254,7 @@ export default async function ServicePage({
                   <div>
                     <p className="font-semibold text-slate-900">{t.label}</p>
                     <p className="mt-0.5 text-sm text-slate-600">
-                      Available at our PM Palem clinic — gentle, pain-free
+                      Available at our Madhurawada clinic — gentle, pain-free
                       procedure by Dr. P. Anusha, BDS, FAGE (Manipal).
                     </p>
                   </div>
