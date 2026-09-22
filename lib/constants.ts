@@ -95,6 +95,7 @@ export const NAV_LINKS: NavLink[] = [
   { label: "About Dr. Anusha", href: "/about" },
   { label: "Patient Care Tips", href: "/patient-care-tips" },
   { label: "Timings & Location", href: "/location" },
+  { label: "Blogs", href: "/#blogs" },
 ];
 
 export type ServiceCategoryIcon =

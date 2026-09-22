@@ -11,6 +11,7 @@ import { DoctorProfile } from "@/components/DoctorProfile";
 import { PatientCareTips } from "@/components/PatientCareTips";
 import { FAQSection } from "@/components/FAQSection";
 import { LocationSection } from "@/components/LocationSection";
+import { BlogSection } from "@/components/BlogSection";
 import { AppointmentModal } from "@/components/AppointmentModal";
 import { TestimonialsModal } from "@/components/TestimonialsModal";
 
@@ -57,6 +58,8 @@ export default function HomePage() {
         <FAQSection />
 
         <LocationSection />
+
+        <BlogSection onBookClick={(service) => openModal(service)} />
       </main>
 
       {/* ── Footer ── */}

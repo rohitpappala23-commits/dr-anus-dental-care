@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/patient-care-tips",
     "/location",
+    "/blog",
   ].map((route) => ({
     url: `${SITE_URL}${route}`,
     lastModified: now,

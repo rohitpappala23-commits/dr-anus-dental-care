@@ -394,6 +394,15 @@ export function Navbar({ onBookClick }: NavbarProps) {
               <span>Timings & Location</span>
               <span className="text-slate-400">›</span>
             </Link>
+
+            <Link
+              href="/#blogs"
+              onClick={closeMobile}
+              className="py-4 hover:text-[#970747] flex items-center justify-between transition-colors"
+            >
+              <span>Blogs</span>
+              <span className="text-slate-400">›</span>
+            </Link>
           </nav>
 
           <div className="mt-8 flex flex-col gap-3 shrink-0">
