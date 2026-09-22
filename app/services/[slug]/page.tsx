@@ -60,6 +60,14 @@ export function generateStaticParams() {
   return Array.from(ROUTE_MAP.keys()).map((slug) => ({ slug }));
 }
 
+const CUSTOM_META: Record<string, { title: string; description: string }> = {
+  "dental-implants": {
+    title: "Dental Implants in Vizag - Restore Your Smile Today",
+    description:
+      "Missing teeth? Get natural, lifelong dental implants in PM Palem & Madhurawada at Dr. Anu's Dental Care. Consult Dr. P. Anusha to restore your confident smile!",
+  },
+};
+
 /* ── Per-page metadata ── */
 export async function generateMetadata({
   params,
@@ -70,22 +78,28 @@ export async function generateMetadata({
   const route = ROUTE_MAP.get(slug);
   if (!route) return {};
 
-  const title =
-    route.kind === "category"
+  const custom = CUSTOM_META[slug];
+
+  const rawTitle =
+    custom?.title ??
+    (route.kind === "category"
       ? `${route.category.title} | Dr. Anu's Dental Care`
-      : `${route.item.label} in PM Palem, Visakhapatnam | Dr. Anu's Dental Care`;
+      : `${route.item.label} in PM Palem, Visakhapatnam | Dr. Anu's Dental Care`);
+
+  const title = custom ? { absolute: custom.title } : rawTitle;
 
   const description =
-    route.kind === "category"
+    custom?.description ??
+    (route.kind === "category"
       ? `${route.category.title} services at Dr. Anu's Dental Care, PM Palem, Visakhapatnam. Led by Dr. P. Anusha — BDS, FAGE (Manipal).`
-      : `${route.item.label} at Dr. Anu's Dental Care, PM Palem, Visakhapatnam. Gentle, pain-free treatment by Dr. P. Anusha — BDS, FAGE (Manipal). Call +91 9121081357.`;
+      : `${route.item.label} at Dr. Anu's Dental Care, PM Palem, Visakhapatnam. Gentle, pain-free treatment by Dr. P. Anusha — BDS, FAGE (Manipal). Call +91 9121081357.`);
 
   return {
     title,
     description,
     alternates: { canonical: `/services/${slug}` },
     openGraph: {
-      title,
+      title: rawTitle,
       description,
       url: `${SITE_URL}/services/${slug}`,
     },
