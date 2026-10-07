@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { X, CalendarCheck, MessageCircle, CheckCircle2, ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { X, MessageCircle, ChevronDown } from "lucide-react";
 import { SERVICE_MENU } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -21,23 +20,31 @@ type FieldProps = {
   label: string;
   htmlFor: string;
   required?: boolean;
+  error?: string;
   children: React.ReactNode;
 };
 
-function Field({ label, htmlFor, required, children }: FieldProps) {
+function Field({ label, htmlFor, required, error, children }: FieldProps) {
   return (
     <div>
-      <label
-        htmlFor={htmlFor}
-        className="block text-xs font-semibold uppercase tracking-wider text-slate-600"
-      >
-        {label}
-        {required && (
-          <span className="ml-1 text-[#970747]" aria-hidden>
-            *
+      <div className="flex items-center justify-between">
+        <label
+          htmlFor={htmlFor}
+          className="block text-xs font-semibold uppercase tracking-wider text-slate-600"
+        >
+          {label}
+          {required && (
+            <span className="ml-1 text-[#970747]" aria-hidden>
+              *
+            </span>
+          )}
+        </label>
+        {error && (
+          <span className="text-xs font-medium text-rose-600" role="alert">
+            {error}
           </span>
         )}
-      </label>
+      </div>
       <div className="mt-1.5">{children}</div>
     </div>
   );
@@ -56,7 +63,7 @@ export function AppointmentModal({
   const [treatment, setTreatment] = useState(defaultTreatment ?? "");
   const [date, setDate] = useState("");
   const [timeSlot, setTimeSlot] = useState<TimeSlot | "">("");
-  const [submitted, setSubmitted] = useState(false);
+  const [hasAttempted, setHasAttempted] = useState(false);
   const firstFieldRef = useRef<HTMLInputElement>(null);
 
   /* ── Reset & focus on open ── */
@@ -67,7 +74,7 @@ export function AppointmentModal({
     setTreatment(defaultTreatment ?? "");
     setDate("");
     setTimeSlot("");
-    setSubmitted(false);
+    setHasAttempted(false);
     const t = setTimeout(() => firstFieldRef.current?.focus(), 80);
     return () => clearTimeout(t);
   }, [isOpen, defaultTreatment]);
@@ -90,8 +97,24 @@ export function AppointmentModal({
   }, [isOpen, onClose]);
 
   /* ── Validation ── */
-  const isValid =
-    name.trim().length > 0 && phone.trim().replace(/\D/g, "").length >= 10;
+  const isNameValid = name.trim().length > 0;
+  const isPhoneValid = phone.trim().replace(/\D/g, "").length >= 10;
+  const isValid = isNameValid && isPhoneValid;
+
+  /* ── Date formatting helper ── */
+  const formattedDate = (() => {
+    if (!date) return "Not specified";
+    const parts = date.split("-").map(Number);
+    if (parts.length === 3 && parts[0] && parts[1] && parts[2]) {
+      const d = new Date(parts[0], parts[1] - 1, parts[2]);
+      return d.toLocaleDateString("en-IN", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      });
+    }
+    return date;
+  })();
 
   /* ── WhatsApp deep-link ── */
   const whatsappHref = (() => {
@@ -99,10 +122,10 @@ export function AppointmentModal({
       "Hello Dr. Anu's Dental Care 👋",
       "I'd like to book an appointment.",
       "",
-      `🧑 Name: ${name || "—"}`,
-      `📞 Phone: ${phone || "—"}`,
+      `🧑 Name: ${name.trim() || "—"}`,
+      `📞 Phone: ${phone.trim() || "—"}`,
       `🦷 Treatment: ${treatment || "Not specified"}`,
-      `📅 Preferred Date: ${date ? new Date(date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" }) : "Not specified"}`,
+      `📅 Preferred Date: ${formattedDate}`,
       `🕐 Preferred Time: ${timeSlot || "Not specified"}`,
     ];
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
@@ -112,8 +135,14 @@ export function AppointmentModal({
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    if (!isValid) return;
-    setSubmitted(true);
+    if (!isValid) {
+      setHasAttempted(true);
+      if (!isNameValid) {
+        firstFieldRef.current?.focus();
+      }
+      return;
+    }
+    window.open(whatsappHref, "_blank", "noopener,noreferrer");
   }
 
   const todayISO = new Date().toISOString().slice(0, 10);
@@ -145,231 +174,224 @@ export function AppointmentModal({
           )}
         >
           {/* ── Header gradient band ── */}
-          {!submitted && (
-            <div className="border-b border-slate-200 bg-gradient-to-r from-[#fdf2f6] to-white px-6 py-5 sm:px-8">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h2
-                    id="appointment-modal-title"
-                    className="font-display text-xl font-semibold text-slate-900"
-                  >
-                    Book an Appointment
-                  </h2>
-                  <p className="mt-0.5 text-sm text-slate-600">
-                    Fill in your details — we&apos;ll confirm your slot shortly.
-                  </p>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={onClose}
-                  aria-label="Close booking modal"
-                  className="flex size-9 shrink-0 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition-colors hover:bg-white hover:text-slate-900 cursor-pointer"
-                  suppressHydrationWarning
+          <div className="border-b border-slate-200 bg-gradient-to-r from-[#fdf2f6] to-white px-6 py-5 sm:px-8">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h2
+                  id="appointment-modal-title"
+                  className="font-display text-xl font-semibold text-slate-900"
                 >
-                  <X className="size-4" aria-hidden />
-                </button>
+                  Book an Appointment
+                </h2>
+                <p className="mt-0.5 text-sm text-slate-600">
+                  Fill in your details to book instantly via WhatsApp.
+                </p>
               </div>
+
+              <button
+                type="button"
+                onClick={onClose}
+                aria-label="Close booking modal"
+                className="flex size-9 shrink-0 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition-colors hover:bg-white hover:text-slate-900 cursor-pointer"
+                suppressHydrationWarning
+              >
+                <X className="size-4" aria-hidden />
+              </button>
             </div>
-          )}
+          </div>
 
           <div className="px-6 py-6 sm:px-8">
-            {/* ── Success state ── */}
-            {submitted ? (
-              <div className="py-6 text-center">
-                <div className="mx-auto flex size-16 items-center justify-center rounded-full border-2 border-[#970747]/30 bg-[#fdf2f6]">
-                  <CheckCircle2 className="size-8 text-[#970747]" aria-hidden />
-                </div>
-                <h2 className="mt-5 text-xl font-semibold text-slate-900">
-                  Request Received! 🎉
-                </h2>
-                <p className="mx-auto mt-2.5 max-w-xs text-sm leading-relaxed text-slate-600">
-                  Thanks,{" "}
-                  <strong className="text-slate-800">{name.split(" ")[0]}</strong>.
-                  We&apos;ll call you at{" "}
-                  <strong className="text-slate-800">{phone}</strong> shortly to
-                  confirm your
-                  {timeSlot
-                    ? ` ${(timeSlot.split(" (")[0] ?? timeSlot).toLowerCase()}`
-                    : ""}{" "}
-                  appointment
-                  {treatment ? ` for ${treatment}` : ""}.
-                </p>
-                <Button onClick={onClose} className="mt-6">
-                  Done
-                </Button>
-              </div>
-            ) : (
-              /* ── Form ── */
-              <form onSubmit={handleSubmit} noValidate>
-                <div className="space-y-4">
-                  {/* Full Name */}
-                  <Field label="Full Name" htmlFor="appt-name" required>
+            {/* ── Form ── */}
+            <form onSubmit={handleSubmit} noValidate>
+              <div className="space-y-4">
+                {/* Full Name */}
+                <Field
+                  label="Full Name"
+                  htmlFor="appt-name"
+                  required
+                  error={
+                    hasAttempted && !isNameValid
+                      ? "Name is required"
+                      : undefined
+                  }
+                >
+                  <input
+                    ref={firstFieldRef}
+                    id="appt-name"
+                    type="text"
+                    required
+                    autoComplete="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className={cn(
+                      inputClasses,
+                      hasAttempted && !isNameValid && "border-rose-400 focus:border-rose-500 focus:ring-rose-200",
+                    )}
+                    placeholder="Your full name"
+                    suppressHydrationWarning
+                  />
+                </Field>
+
+                {/* Phone Number */}
+                <Field
+                  label="Phone Number"
+                  htmlFor="appt-phone"
+                  required
+                  error={
+                    hasAttempted && !isPhoneValid
+                      ? "Valid 10-digit phone required"
+                      : undefined
+                  }
+                >
+                  <input
+                    id="appt-phone"
+                    type="tel"
+                    required
+                    autoComplete="tel"
+                    inputMode="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className={cn(
+                      inputClasses,
+                      hasAttempted && !isPhoneValid && "border-rose-400 focus:border-rose-500 focus:ring-rose-200",
+                    )}
+                    placeholder="+91 XXXXX XXXXX"
+                    suppressHydrationWarning
+                  />
+                </Field>
+
+                {/* Selected Treatment */}
+                <Field label="Selected Treatment" htmlFor="appt-treatment">
+                  <div className="relative">
+                    <select
+                      id="appt-treatment"
+                      value={treatment}
+                      onChange={(e) => setTreatment(e.target.value)}
+                      className={cn(inputClasses, "cursor-pointer appearance-none pr-10")}
+                      suppressHydrationWarning
+                    >
+                      <option value="">Select a treatment or service</option>
+                      {treatment &&
+                        !SERVICE_MENU.some((c) =>
+                          c.items.some((i) => i.label === treatment)
+                        ) &&
+                        treatment !== "General Consultation" && (
+                          <option value={treatment}>{treatment}</option>
+                        )}
+                      {SERVICE_MENU.map((category) => (
+                        <optgroup key={category.title} label={category.title}>
+                          {category.items.map((item) => (
+                            <option key={item.href} value={item.label}>
+                              {item.label}
+                            </option>
+                          ))}
+                        </optgroup>
+                      ))}
+                      <option value="General Consultation">
+                        General Consultation / Not Sure
+                      </option>
+                    </select>
+                    <ChevronDown className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-slate-500" aria-hidden />
+                  </div>
+                </Field>
+
+                {/* Date + Time Slot */}
+                <div className="grid grid-cols-2 gap-4">
+                  <Field label="Preferred Date" htmlFor="appt-date">
                     <input
-                      ref={firstFieldRef}
-                      id="appt-name"
-                      type="text"
-                      required
-                      autoComplete="name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
+                      id="appt-date"
+                      type="date"
+                      min={todayISO}
+                      value={date}
+                      onChange={(e) => setDate(e.target.value)}
                       className={inputClasses}
-                      placeholder="Your full name"
                       suppressHydrationWarning
                     />
                   </Field>
 
-                  {/* Phone Number */}
-                  <Field label="Phone Number" htmlFor="appt-phone" required>
-                    <input
-                      id="appt-phone"
-                      type="tel"
-                      required
-                      autoComplete="tel"
-                      inputMode="tel"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      className={inputClasses}
-                      placeholder="+91 XXXXX XXXXX"
-                      suppressHydrationWarning
-                    />
-                  </Field>
-
-                  {/* Selected Treatment */}
-                  <Field label="Selected Treatment" htmlFor="appt-treatment">
-                    <div className="relative">
-                      <select
-                        id="appt-treatment"
-                        value={treatment}
-                        onChange={(e) => setTreatment(e.target.value)}
-                        className={cn(inputClasses, "cursor-pointer appearance-none pr-10")}
-                        suppressHydrationWarning
-                      >
-                        <option value="">Select a treatment or service</option>
-                        {treatment &&
-                          !SERVICE_MENU.some((c) =>
-                            c.items.some((i) => i.label === treatment)
-                          ) &&
-                          treatment !== "General Consultation" && (
-                            <option value={treatment}>{treatment}</option>
-                          )}
-                        {SERVICE_MENU.map((category) => (
-                          <optgroup key={category.title} label={category.title}>
-                            {category.items.map((item) => (
-                              <option key={item.href} value={item.label}>
-                                {item.label}
-                              </option>
-                            ))}
-                          </optgroup>
-                        ))}
-                        <option value="General Consultation">
-                          General Consultation / Not Sure
-                        </option>
-                      </select>
-                      <ChevronDown className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-slate-500" aria-hidden />
+                  <Field
+                    label="Preferred Time"
+                    htmlFor="appt-time-morning"
+                  >
+                    <div className="flex flex-col gap-2">
+                      {TIME_SLOTS.map((slot, i) => (
+                        <label key={slot} className="relative block">
+                          <input
+                            id={
+                              i === 0
+                                ? "appt-time-morning"
+                                : "appt-time-evening"
+                            }
+                            type="radio"
+                            name="timeSlot"
+                            value={slot}
+                            checked={timeSlot === slot}
+                            onChange={() => setTimeSlot(slot)}
+                            className="peer sr-only"
+                            suppressHydrationWarning
+                          />
+                          <span
+                            className={cn(
+                              "flex cursor-pointer items-center justify-center rounded-xl border px-2 py-2.5 text-center text-xs font-medium transition-all duration-150",
+                              timeSlot === slot
+                                ? "bg-[#fdf2f6] border-[#970747] text-[#970747] font-semibold"
+                                : "bg-white border-slate-200 text-slate-600 hover:border-[#f8d0df]",
+                            )}
+                          >
+                            {slot.split(" (")[0]}
+                          </span>
+                        </label>
+                      ))}
                     </div>
                   </Field>
-
-                  {/* Date + Time Slot */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <Field label="Preferred Date" htmlFor="appt-date">
-                      <input
-                        id="appt-date"
-                        type="date"
-                        min={todayISO}
-                        value={date}
-                        onChange={(e) => setDate(e.target.value)}
-                        className={inputClasses}
-                        suppressHydrationWarning
-                      />
-                    </Field>
-
-                    <Field
-                      label="Preferred Time"
-                      htmlFor="appt-time-morning"
-                    >
-                      <div className="flex flex-col gap-2">
-                        {TIME_SLOTS.map((slot, i) => (
-                          <label key={slot} className="relative block">
-                            <input
-                              id={
-                                i === 0
-                                  ? "appt-time-morning"
-                                  : "appt-time-evening"
-                              }
-                              type="radio"
-                              name="timeSlot"
-                              value={slot}
-                              checked={timeSlot === slot}
-                              onChange={() => setTimeSlot(slot)}
-                              className="peer sr-only"
-                              suppressHydrationWarning
-                            />
-                            <span
-                              className={cn(
-                                "flex cursor-pointer items-center justify-center rounded-xl border px-2 py-2.5 text-center text-xs font-medium transition-all duration-150",
-                                timeSlot === slot
-                                  ? "bg-[#fdf2f6] border-[#970747] text-[#970747] font-semibold"
-                                  : "bg-white border-slate-200 text-slate-600 hover:border-[#f8d0df]",
-                              )}
-                            >
-                              {slot.split(" (")[0]}
-                            </span>
-                          </label>
-                        ))}
-                      </div>
-                    </Field>
-                  </div>
                 </div>
+              </div>
 
-                {/* ── CTAs ── */}
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                  {/* WhatsApp */}
-                  <a
-                    href={whatsappHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-disabled={!isValid}
-                    onClick={(e) => {
-                      if (!isValid) e.preventDefault();
-                    }}
-                    className={cn(
-                      "flex flex-1 items-center justify-center gap-2 rounded-full bg-emerald-600 hover:bg-emerald-700 px-6 py-3 text-sm font-semibold text-white shadow-md transition-all duration-150",
-                      isValid
-                        ? "cursor-pointer active:brightness-90"
-                        : "cursor-not-allowed opacity-40",
-                    )}
-                    aria-label={isValid ? "Book appointment via WhatsApp" : "Fill in required fields to book via WhatsApp"}
-                  >
-                    <MessageCircle className="size-4" aria-hidden />
-                    Book via WhatsApp
-                  </a>
+              {/* ── WhatsApp Action Area (Sole prominent CTA) ── */}
+              <div className="mt-6 space-y-3">
+                <a
+                  href={isValid ? whatsappHref : undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="button"
+                  aria-disabled={!isValid}
+                  onClick={(e) => {
+                    if (!isValid) {
+                      e.preventDefault();
+                      setHasAttempted(true);
+                      if (!isNameValid) {
+                        firstFieldRef.current?.focus();
+                      }
+                    }
+                  }}
+                  className={cn(
+                    "group flex w-full items-center justify-center gap-2.5 rounded-full py-3.5 px-6 text-base font-semibold text-white shadow-md transition-all duration-200 select-none",
+                    isValid
+                      ? "bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 shadow-emerald-600/30 hover:shadow-lg hover:shadow-emerald-600/40 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                      : "bg-slate-300 text-slate-500 cursor-not-allowed shadow-none",
+                  )}
+                  aria-label={
+                    isValid
+                      ? "Book appointment via WhatsApp"
+                      : "Fill in name and phone number to book via WhatsApp"
+                  }
+                >
+                  <MessageCircle className="size-5 shrink-0 transition-transform group-hover:scale-110" aria-hidden />
+                  <span>Book via WhatsApp</span>
+                </a>
 
-                  {/* Standard submit */}
-                  <button
-                    type="submit"
-                    disabled={!isValid}
-                    className={cn(
-                      "flex flex-1 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-150",
-                      isValid
-                        ? "bg-[#970747] hover:bg-[#83063d] text-white shadow-md cursor-pointer active:brightness-90"
-                        : "bg-slate-200 text-slate-400 cursor-not-allowed",
-                    )}
-                    suppressHydrationWarning
-                  >
-                    <CalendarCheck className="size-4" aria-hidden />
-                    Submit Request
-                  </button>
-                </div>
-
-                {/* Inline validation hint */}
-                {!isValid && (
-                  <p className="mt-3 text-center text-xs text-slate-500" role="status" aria-live="polite">
-                    Please enter your name and a valid 10-digit phone number to continue.
-                  </p>
-                )}
-              </form>
-            )}
+                <p className="text-center text-xs text-slate-500">
+                  {isValid ? (
+                    <span className="inline-flex items-center justify-center gap-1.5 text-emerald-700 font-medium">
+                      <span className="size-1.5 rounded-full bg-emerald-500 inline-block animate-pulse" />
+                      Opens WhatsApp directly with your pre-filled appointment details
+                    </span>
+                  ) : (
+                    "Please enter your name and 10-digit phone number to continue"
+                  )}
+                </p>
+              </div>
+            </form>
           </div>
         </div>
       </div>
