@@ -221,11 +221,17 @@ export function Footer() {
       {/* ── Bottom bar ── */}
       <div className="border-t border-[#6f0534] px-6 py-5 bg-[#44021f]">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 text-xs text-slate-300 sm:flex-row">
-          <p>
-            © {CURRENT_YEAR}{" "}
-            <span className="text-white font-medium">{BUSINESS.name}</span>.
-            All rights reserved.
-          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center sm:justify-start sm:text-left">
+            <p>
+              © {CURRENT_YEAR}{" "}
+              <span className="text-white font-medium">{BUSINESS.name}</span>.
+              All rights reserved.
+            </p>
+            <span aria-hidden className="text-slate-400">·</span>
+            <p>
+              Powered by <span className="font-medium text-white">SAMify</span>
+            </p>
+          </div>
           <div className="flex items-center gap-4">
             <Link
               href="/privacy-policy"
