@@ -7,13 +7,13 @@ import { PatientCareTips } from "@/components/PatientCareTips";
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Patient Care Tips | Post-Treatment Instructions | Dr. Anu's Dental Care",
+  title: "Patient Care Tips | Post-Treatment Instructions | Dr Anus Dental Care",
   description:
-    "After-care instructions from Dr. Anu's Dental Care, PM Palem — post-extraction care, daily brushing technique, and oral hygiene guidance. Available in English and Telugu.",
+    "After-care instructions from Dr Anus Dental Care, PM Palem — post-extraction care, daily brushing technique, and oral hygiene guidance. Available in English and Telugu.",
   alternates: { canonical: "/patient-care-tips" },
   openGraph: {
     url: `${SITE_URL}/patient-care-tips`,
-    title: "Patient Care Tips | Dr. Anu's Dental Care, PM Palem",
+    title: "Patient Care Tips | Dr Anus Dental Care, PM Palem",
   },
 };
 

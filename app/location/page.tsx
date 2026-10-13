@@ -7,12 +7,12 @@ import { LocationSection } from "@/components/LocationSection";
 import { BUSINESS, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Timings & Location | Dr. Anu's Dental Care, PM Palem",
-  description: `Find Dr. Anu's Dental Care at ${BUSINESS.address.streetAddress}, ${BUSINESS.address.addressLocality}, Visakhapatnam. Open Mon–Sat ${BUSINESS.hoursCompact[0].value} and Sun ${BUSINESS.hoursCompact[1].value}. Call +91 9121081357.`,
+  title: "Timings & Location | Dr Anus Dental Care, PM Palem",
+  description: `Find Dr Anus Dental Care at ${BUSINESS.address.streetAddress}, ${BUSINESS.address.addressLocality}, Visakhapatnam. Open Mon–Sat ${BUSINESS.hoursCompact[0].value} and Sun ${BUSINESS.hoursCompact[1].value}. Call +91 9121081357.`,
   alternates: { canonical: "/location" },
   openGraph: {
     url: `${SITE_URL}/location`,
-    title: "Timings & Location | Dr. Anu's Dental Care, PM Palem, Visakhapatnam",
+    title: "Timings & Location | Dr Anus Dental Care, PM Palem, Visakhapatnam",
   },
 };
 

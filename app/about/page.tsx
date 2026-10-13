@@ -17,12 +17,12 @@ import { Button } from "@/components/ui/Button";
 import { DOCTOR, BUSINESS, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "About Dr. P. Anusha | BDS, FAGE (Manipal) | Dr. Anu's Dental Care",
-  description: `Meet Dr. P. Anusha — BDS, FAGE (Manipal), Reg. No: A15265. Lead dental surgeon at Dr. Anu's Dental Care, PM Palem, Visakhapatnam. Specialising in pain-free restorative, cosmetic, and pediatric dentistry.`,
+  title: "About Dr. P. Anusha | BDS, FAGE (Manipal) | Dr Anus Dental Care",
+  description: `Meet Dr. P. Anusha — BDS, FAGE (Manipal), Reg. No: A15265. Lead dental surgeon at Dr Anus Dental Care, PM Palem, Visakhapatnam. Specialising in pain-free restorative, cosmetic, and pediatric dentistry.`,
   alternates: { canonical: "/about" },
   openGraph: {
     url: `${SITE_URL}/about`,
-    title: "About Dr. P. Anusha | Dr. Anu's Dental Care, Visakhapatnam",
+    title: "About Dr. P. Anusha | Dr Anus Dental Care, Visakhapatnam",
   },
 };
 

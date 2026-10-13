@@ -6,9 +6,9 @@ import { MobileActionBar } from "@/components/MobileActionBar";
 import { BUSINESS, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Dr. Anu's Dental Care",
+  title: "Privacy Policy | Dr Anus Dental Care",
   description:
-    "Privacy Policy for Dr. Anu's Dental Care, PM Palem, Visakhapatnam. How we collect, use, and protect your personal information.",
+    "Privacy Policy for Dr Anus Dental Care, PM Palem, Visakhapatnam. How we collect, use, and protect your personal information.",
   alternates: { canonical: "/privacy-policy" },
   openGraph: { url: `${SITE_URL}/privacy-policy` },
   robots: { index: false },

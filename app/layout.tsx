@@ -18,7 +18,7 @@ const fraunces = Fraunces({
 });
 
 const TITLE =
-  "Dr. Anu's Dental Care | Multispeciality Dental Clinic in PM Palem, Visakhapatnam";
+  "Dr Anus Dental Care | Multispeciality Dental Clinic in PM Palem, Visakhapatnam";
 const DESCRIPTION =
   "Trusted multispeciality dental care in PM Palem, Visakhapatnam. Root canal treatment, dental implants, braces & Invisalign, teeth whitening, pediatric dentistry. Led by Dr. P. Anusha — BDS, FAGE (Manipal). Open Mon–Sat 9 AM–9 PM, Sun 9 AM–1 PM. Call +91 9121081357.";
 
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
   title: {
     default: TITLE,
-    template: "%s | Dr. Anu's Dental Care",
+    template: "%s | Dr Anus Dental Care",
   },
   description: DESCRIPTION,
   keywords: [
@@ -43,10 +43,10 @@ export const metadata: Metadata = {
     "braces and Invisalign Visakhapatnam",
   ],
 
-  authors: [{ name: "Dr. Anu's Dental Care", url: SITE_URL }],
-  creator: "Dr. Anu's Dental Care",
-  publisher: "Dr. Anu's Dental Care",
-  applicationName: "Dr. Anu's Dental Care",
+  authors: [{ name: "Dr Anus Dental Care", url: SITE_URL }],
+  creator: "Dr Anus Dental Care",
+  publisher: "Dr Anus Dental Care",
+  applicationName: "Dr Anus Dental Care",
   category: "Health",
 
   // Canonical URL — every page should override `alternates.canonical`
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: SITE_URL,
-    siteName: "Dr. Anu's Dental Care",
+    siteName: "Dr Anus Dental Care",
     title: TITLE,
     description: DESCRIPTION,
     images: [
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
         url: "/og/dr-anus-dental-care-og.jpg",
         width: 1200,
         height: 630,
-        alt: "Dr. Anu's Dental Care — Dentist in PM Palem, Visakhapatnam",
+        alt: "Dr Anus Dental Care — Dentist in PM Palem, Visakhapatnam",
       },
     ],
   },

@@ -64,7 +64,7 @@ const CUSTOM_META: Record<string, { title: string; description: string }> = {
   "dental-implants": {
     title: "Dental Implants in Vizag - Restore Your Smile Today",
     description:
-      "Missing teeth? Get natural, lifelong dental implants in PM Palem & Madhurawada at Dr. Anu's Dental Care. Consult Dr. P. Anusha to restore your confident smile!",
+      "Missing teeth? Get natural, lifelong dental implants in PM Palem & Madhurawada at Dr Anus Dental Care. Consult Dr. P. Anusha to restore your confident smile!",
   },
 };
 
@@ -83,16 +83,16 @@ export async function generateMetadata({
   const rawTitle =
     custom?.title ??
     (route.kind === "category"
-      ? `${route.category.title} | Dr. Anu's Dental Care`
-      : `${route.item.label} in PM Palem, Visakhapatnam | Dr. Anu's Dental Care`);
+      ? `${route.category.title} | Dr Anus Dental Care`
+      : `${route.item.label} in PM Palem, Visakhapatnam | Dr Anus Dental Care`);
 
   const title = custom ? { absolute: custom.title } : rawTitle;
 
   const description =
     custom?.description ??
     (route.kind === "category"
-      ? `${route.category.title} services at Dr. Anu's Dental Care, PM Palem, Visakhapatnam. Led by Dr. P. Anusha — BDS, FAGE (Manipal).`
-      : `${route.item.label} at Dr. Anu's Dental Care, PM Palem, Visakhapatnam. Gentle, pain-free treatment by Dr. P. Anusha — BDS, FAGE (Manipal). Call +91 9121081357.`);
+      ? `${route.category.title} services at Dr Anus Dental Care, PM Palem, Visakhapatnam. Led by Dr. P. Anusha — BDS, FAGE (Manipal).`
+      : `${route.item.label} at Dr Anus Dental Care, PM Palem, Visakhapatnam. Gentle, pain-free treatment by Dr. P. Anusha — BDS, FAGE (Manipal). Call +91 9121081357.`);
 
   return {
     title,
